@@ -23,7 +23,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tommcdo/vim-lion'
 Plug 'justinmk/vim-dirvish'
 Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
-Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'jamessan/vim-gnupg'
 
 Plug 'prabirshrestha/async.vim'
