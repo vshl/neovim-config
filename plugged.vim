@@ -1,4 +1,10 @@
-call plug#begin('~/.config/nvim/plugged')
+if has('win32')
+    let $VIMPLUGDIRECTORY = '~/appdata/local/nvim-data/plugged'
+else
+    let $VIMPLUGDIRECTORY = '~/.local/share/nvim/plugged'
+endif
+
+call plug#begin($VIMPLUGDIRECTORY)
 
 Plug 'vim-scripts/IndentTab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
