@@ -1,5 +1,9 @@
 " vim-plug
-source $HOME/.config/nvim/plugged.vim
+if has('win32')
+  source $HOME/appdata/local/nvim/plugged.vim
+else
+  source $HOME/.config/nvim/plugged.vim
+endif
 
 " Mouse support
 set mouse=a
