@@ -52,7 +52,7 @@ set clipboard=unnamed
 
 " Identation
 
-set expandtab shiftwidth=2 softtabstop=2 tabstop=4 textwidth=80
+set expandtab shiftwidth=2 softtabstop=2 tabstop=4 textwidth=120
 set modeline
 
 " Set inccommand
@@ -236,7 +236,6 @@ let g:gitgutter_preview_win_floating = 1
 
 " Additional keybindings
 "
-nnoremap <silent> <F9> :TagbarToggle<CR>
 nnoremap <silent> <c-p> :Files<CR>
 
 nnoremap <silent> <leader>bu :Buffers<CR>
