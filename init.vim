@@ -240,7 +240,8 @@ nnoremap <silent> <c-p> :Files<CR>
 
 nnoremap <silent> <leader>bu :Buffers<CR>
 nnoremap <silent> <leader>li :Lines<CR>
-nnoremap <silent> <leader>ta :BTags<CR>
+nnoremap <silent> <leader>ta :Tags<CR>
+nnoremap <silent> <leader>bt :BTags<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <silent> <leader>dv :Dirvish<CR>
 

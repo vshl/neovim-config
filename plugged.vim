@@ -31,6 +31,8 @@ Plug 'justinmk/vim-dirvish'
 Plug 'kchmck/vim-coffee-script', { 'for' : 'coffee' }
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'jamessan/vim-gnupg'
+Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
