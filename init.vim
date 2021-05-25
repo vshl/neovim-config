@@ -264,5 +264,9 @@ if executable(s:clip)
   augroup END
 end
 
+" indent_blankline
+let g:indent_blankline_space_char = '.'
+
+
 " lua/init.lua
 lua require 'init'
