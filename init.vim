@@ -146,6 +146,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader>df <plug>(lsp-document-format)
+    vmap <buffer> <leader>df <plug>(lsp-document-format)
     inoremap <buffer> <expr><c-f> lsp#scroll(+4)
     inoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
