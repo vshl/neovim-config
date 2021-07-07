@@ -66,11 +66,9 @@ return packer.startup(function()
     config = function()
       require('completion').config()
     end,
-    wants = { "LuaSnip" },
     requires = {
       {
         "L3MON4D3/LuaSnip",
-        wants = "friendly-snippets",
         event = "InsertCharPre",
         config = function()
           require("completion").snippets()
@@ -103,8 +101,17 @@ return packer.startup(function()
   }
 
   -- other plugins
-  use { 'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
-  use 'junegunn/fzf.vim'
+  use {
+    'junegunn/fzf.vim',
+    cmd = { 'Files', 'Buffers', 'Tags', 'Lines', 'BTags', 'Rg' },
+    opt = true,
+    requires = {
+      {
+        'junegunn/fzf',
+        run = function() vim.fn['fzf#install']() end 
+      }
+    }
+  }
   use 'junegunn/vim-slash'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-commentary'
@@ -112,7 +119,7 @@ return packer.startup(function()
   use 'tpope/vim-repeat'
   use {
     'tpope/vim-fugitive',
-    cmd = 'Git'
+    cmd = { 'Git', 'Gdiff', 'Gclog' }
   }
   use 'tmux-plugins/vim-tmux'
   use {
