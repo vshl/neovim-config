@@ -8,7 +8,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- local opt = {}
+local opt = {}
 
 -- compe
 
@@ -62,3 +62,14 @@ map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
+
+-- Telescope
+
+map("n", "<leader>ff", [[<cmd> Telescope find_files <CR>]], opt)
+map("n", "<leader>fg", [[<cmd> Telescope live_grep <CR>]], opt)
+map("n", "<leader>fb", [[<cmd>Telescope buffers<CR>]], opt)
+map("n", "<leader>fh", [[<cmd>Telescope help_tags<CR>]], opt)
+map("n", "<leader>ta", [[<cmd>Telescope tags<CR>]], opt)
+map("n", "<leader>co", [[<cmd> Telescope git_commits <CR>]], opt)
+-- map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
+
