@@ -76,7 +76,9 @@ return packer.startup(function()
           require("completion").snippets()
         end
       },
-      "rafamadriz/friendly-snippets"
+      { "rafamadriz/friendly-snippets",
+        after = 'LuaSnip'
+      }
     }
   }
   use {
@@ -94,6 +96,7 @@ return packer.startup(function()
   }
   use {
     'onsails/lspkind-nvim',
+    after = 'nvim-web-devicons',
     config = function()
       require('lspkind').init()
     end
