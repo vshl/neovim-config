@@ -101,19 +101,10 @@ return packer.startup(function()
       require('lspkind').init()
     end
   }
-  use {
-    'nvim-telescope/telescope.nvim',
-    cmd = 'Telescope',
-    requires = {
-      { 'nvim-lua/popup.nvim' },
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-    },
-    config = function ()
-      require('telescope-nvim').config()
-    end
-  }
 
   -- other plugins
+  use { 'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
+  use 'junegunn/fzf.vim'
   use 'junegunn/vim-slash'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-commentary'
