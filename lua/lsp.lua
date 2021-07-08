@@ -27,27 +27,19 @@ lsp.config = function()
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-    if client.resolved_capabilities.document_formatting then
-      buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    elseif client.resolved_capabilities.document_range_formatting then
-      buf_set_keymap('n', "<leader>f", '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
-    end
-
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-      properties = {
-        'documentation',
-        'detail',
-        'additionalTextEdits',
-      }
-    }
-
-    require('lspconfig').rust_analyzer.setup {
-      capabilities = capabilities,
-    }
+    buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    buf_set_keymap('n', "<leader>f", '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
   end
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      'documentation',
+      'detail',
+      'additionalTextEdits',
+    }
+  }
 
   local function setup_servers()
     require('lspinstall').setup()
@@ -58,6 +50,7 @@ lsp.config = function()
     for _, server in pairs(servers) do
       lspconf[server].setup {
         on_attach = on_attach,
+        capabilities = capabilities,
         flags = {
           debounce_text_changes = 150,
         },
