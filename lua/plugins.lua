@@ -63,13 +63,15 @@ return packer.startup(function()
   use {
     'hrsh7th/nvim-compe',
     event = 'InsertEnter',
+    wants = 'LuaSnip',
     config = function()
       require('completion').config()
     end,
     requires = {
       {
-        "L3MON4D3/LuaSnip",
-        event = "InsertCharPre",
+        'L3MON4D3/LuaSnip',
+        event = 'InsertCharPre',
+        wants = 'friendly-snippets',
         config = function()
           require("completion").snippets()
         end
@@ -84,7 +86,7 @@ return packer.startup(function()
     after = 'nvim-compe',
     config = function()
       require('nvim-autopairs').setup()
-      require("nvim-autopairs.completion.compe").setup(
+      require('nvim-autopairs.completion.compe').setup(
         {
           map_cr = true,
           map_complete = true -- insert () func completion
@@ -94,10 +96,14 @@ return packer.startup(function()
   }
   use {
     'onsails/lspkind-nvim',
-    after = 'nvim-web-devicons',
+    event = 'InsertCharPre',
     config = function()
       require('lspkind').init()
     end
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    cmd = 'NvimTreeToggle'
   }
 
   -- other plugins
@@ -127,7 +133,6 @@ return packer.startup(function()
     ft = { 'tex' },
   }
   use 'tommcdo/vim-lion'
-  use 'justinmk/vim-dirvish'
   use 'jamessan/vim-gnupg'
   use 'kassio/neoterm'
 end)

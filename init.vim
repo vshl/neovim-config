@@ -66,14 +66,6 @@ endif
 " Plugins start here
 "################################
 
-" Ultisnips
-let g:UltiSnipsJumpForwardTrigger	= "<c-b>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-z>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 " Neoterm
 let g:neoterm_default_mod = 'botright'
 let g:neoterm_size = '20'
@@ -90,6 +82,8 @@ nnoremap <silent> ,to :Ttoggle<CR>
 nnoremap <silent> ,tl :Tclear!<CR>
 " kills the current job (send a <c-c>)
 nnoremap <silent> ,tc :Tkill<CR>
+" esc to toggle active terminal
+tnoremap <Esc> <C-\><C-n>
 
 " FZF
 " Command for git grep
@@ -161,19 +155,19 @@ nnoremap <silent> <leader>li :Lines<CR>
 nnoremap <silent> <leader>ta :Tags<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
-nnoremap <silent> <leader>dv :Dirvish<CR>
 
 " nvim-compe
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-" Git commands
-command! -nargs=+ Tg :T git <args>
+" nvim-tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
-tnoremap <Esc> <C-\><C-n>
 " Toggle spellcheck
 nnoremap <leader>s :set spell!<CR>
 

@@ -33,6 +33,20 @@ lsp.config = function()
     elseif client.resolved_capabilities.document_range_formatting then
       buf_set_keymap('n', "<leader>f", '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
     end
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+      properties = {
+        'documentation',
+        'detail',
+        'additionalTextEdits',
+      }
+    }
+
+    require('lspconfig').rust_analyzer.setup {
+      capabilities = capabilities,
+    }
   end
 
   local function setup_servers()
