@@ -28,12 +28,8 @@ set relativenumber
 set shortmess+=c
 set completeopt=menuone,noselect
 
-augroup markdown
-  au!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup END
+" don't abandon buffers
+set hidden
 
 " Highlight the current line
 set cursorline
