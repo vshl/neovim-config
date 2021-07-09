@@ -76,7 +76,8 @@ return packer.startup(function()
           require("completion").snippets()
         end
       },
-      { "rafamadriz/friendly-snippets",
+      {
+        'rafamadriz/friendly-snippets',
         after = 'LuaSnip'
       }
     }
@@ -103,7 +104,7 @@ return packer.startup(function()
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    cmd = 'NvimTreeToggle'
+    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' }
   }
 
   -- other plugins
@@ -114,7 +115,7 @@ return packer.startup(function()
     requires = {
       {
         'junegunn/fzf',
-        run = function() vim.fn['fzf#install']() end 
+        run = function() vim.fn['fzf#install']() end
       }
     }
   }

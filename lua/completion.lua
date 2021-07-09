@@ -26,11 +26,11 @@ completion.config = function()
     source = {
       path = true;
       buffer = true;
-      calc = true;
+      -- calc = true;
       nvim_lsp = true;
-      nvim_lua = true;
-      vsnip = false;
-      ultisnips = false;
+      -- nvim_lua = true;
+      -- vsnip = false;
+      -- ultisnips = false;
       luasnip = true;
     };
   }
