@@ -43,7 +43,7 @@ return packer.startup(function()
     run = ':TSUpdate',
     event = 'BufRead',
     config = function()
-      require('treesitter').config()
+      require('plugins.treesitter').config()
     end
   }
   use {
@@ -53,7 +53,7 @@ return packer.startup(function()
       event = 'BufRead',
     },
     config = function()
-      require('lsp').config()
+      require('plugins.lsp').config()
     end
   }
   use {
@@ -65,7 +65,7 @@ return packer.startup(function()
     event = 'InsertEnter',
     wants = 'LuaSnip',
     config = function()
-      require('completion').config()
+      require('plugins.completion').config()
     end,
     requires = {
       {
@@ -73,7 +73,7 @@ return packer.startup(function()
         event = 'InsertCharPre',
         wants = 'friendly-snippets',
         config = function()
-          require("completion").snippets()
+          require("plugins.completion").snippets()
         end
       },
       {

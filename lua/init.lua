@@ -10,7 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
-require 'plugins'
+require 'plugins.packer'
 require 'mappings'
 
 -- base16.lua
