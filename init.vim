@@ -9,8 +9,8 @@ set ignorecase
 set smartcase
 
 " fold method
-set foldmethod=indent
-set foldlevelstart=99
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Background
 set background=dark
