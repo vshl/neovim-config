@@ -12,14 +12,6 @@ set smartcase
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-" Background
-set background=dark
-
-" GUI options
-" if has('gui_running')
-"   :set guifont=Monaco:h11
-" endif
-
 " Line numbers
 set number
 set relativenumber
@@ -181,4 +173,12 @@ end
 
 " indent_blankline
 let g:indent_blankline_space_char = '.'
+
+" packer
+augroup Packer
+  autocmd!
+  autocmd BufWritePost $PWD/lua/plugins/packer.lua PackerCompile
+augroup end
+
+
 

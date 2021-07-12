@@ -1,3 +1,4 @@
+-- packer plugins list
 local packer = require('packer')
 local use = packer.use
 
@@ -105,12 +106,6 @@ return packer.startup(function()
   use {
     'kyazdani42/nvim-tree.lua',
     cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' }
-  }
-  use {
-    'mfussenegger/nvim-dap',
-    config = function ()
-      require('plugins.dap').config()
-    end
   }
 
   -- other plugins
