@@ -106,6 +106,12 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' }
   }
+  use {
+    'mfussenegger/nvim-dap',
+    config = function ()
+      require('plugins.dap').config()
+    end
+  }
 
   -- other plugins
   use {

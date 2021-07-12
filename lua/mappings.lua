@@ -8,7 +8,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- local opt = {}
+local opt = {}
 
 -- compe
 
@@ -68,3 +68,13 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 -- map("n", "<leader>ta", [[<cmd>Telescope tags<CR>]], opt)
 -- map("n", "<leader>co", [[<cmd> Telescope git_commits <CR>]], opt)
 
+-- nvim-dap
+map('n', '<F5>', [[<Cmd> lua require'dap'.continue()<CR>]], opt)
+map('n', '<F10>', [[<Cmd> lua require'dap'.step_over()<CR>]], opt)
+map('n', '<F11>', [[<Cmd> lua require'dap'.step_into()<CR>]], opt)
+map('n', '<F12>', [[<Cmd> lua require'dap'.step_out()<CR>]], opt)
+map('n', '<leader>b', [[<Cmd> lua require'dap'.toggle_breakpoint()<CR>]], opt)
+map('n', '<leader>B', [[<Cmd> lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>]], opt)
+map('n', '<leader>lp', [[<Cmd> lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>]], opt)
+map('n', '<leader>dr', [[<Cmd> lua require'dap'.repl.open()<CR>]], opt)
+map('n', '<leader>dl', [[<Cmd> lua require'dap'.run_last()<CR>]], opt)
