@@ -107,6 +107,14 @@ return packer.startup(function()
     'kyazdani42/nvim-tree.lua',
     cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' }
   }
+  use {
+    'folke/zen-mode.nvim',
+    cmd = 'ZenMode'
+  }
+  use {
+    'folke/twilight.nvim',
+    after = 'zen-mode.nvim'
+  }
 
   -- other plugins
   use {
