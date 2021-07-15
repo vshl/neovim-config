@@ -96,3 +96,4 @@ map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
 map('t', '<Esc>', [[<C-\><C-n>]], opt)
 map('n', '<C-t>', [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
 map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
+vim.cmd[[ command! -nargs=1 TE TermExec cmd=<q-args> ]]
