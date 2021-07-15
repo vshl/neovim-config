@@ -54,25 +54,6 @@ endif
 " Plugins start here
 "################################
 
-" Neoterm
-let g:neoterm_default_mod = 'botright'
-let g:neoterm_size = '20'
-let g:neoterm_fixedsize = 1
-let g:neoterm_autoscroll = 1
-
-nnoremap <silent> <f10> :TREPLSendFile<cr>
-nnoremap <silent> <f11> :TREPLSendLine<cr>
-vnoremap <silent> <f11> :TREPLSendSelection<cr>
-
-" open and hide/close all terminals
-nnoremap <silent> ,to :Ttoggle<CR>
-" clear terminal
-nnoremap <silent> ,tl :Tclear!<CR>
-" kills the current job (send a <c-c>)
-nnoremap <silent> ,tc :Tkill<CR>
-" esc to toggle active terminal
-tnoremap <Esc> <C-\><C-n>
-
 " FZF
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -144,18 +125,6 @@ nnoremap <silent> <leader>ta :Tags<CR>
 nnoremap <silent> <leader>bt :BTags<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 
-" nvim-compe
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-" nvim-tree
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-
 " Toggle spellcheck
 nnoremap <leader>s :set spell!<CR>
 
@@ -179,6 +148,3 @@ augroup Packer
   autocmd!
   autocmd BufWritePost $PWD/lua/plugins/packer.lua PackerCompile
 augroup end
-
-
-

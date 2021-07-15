@@ -15,10 +15,7 @@ return packer.startup(function()
   }
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      opt = true
-    },
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('gitsigns').setup()
     end
@@ -109,11 +106,20 @@ return packer.startup(function()
   }
   use {
     'folke/zen-mode.nvim',
-    cmd = 'ZenMode'
+    cmd = { 'ZenMode' }
   }
   use {
     'folke/twilight.nvim',
     after = 'zen-mode.nvim'
+  }
+  use {
+    'akinsho/nvim-toggleterm.lua',
+    cmd = { 'ToggleTerm' },
+    config = function()
+      require('toggleterm').setup {
+        direction = 'float'
+      }
+    end
   }
 
   -- other plugins
@@ -144,5 +150,5 @@ return packer.startup(function()
   }
   use 'tommcdo/vim-lion'
   use 'jamessan/vim-gnupg'
-  use 'kassio/neoterm'
+  -- use 'kassio/neoterm'
 end)

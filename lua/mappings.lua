@@ -58,6 +58,16 @@ map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
+map('i', '<C-Space>', [[<Cmd> compe#complete()]], {expr = true})
+map('i', '<CR>', [[compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))]], {expr = true})
+map('i', '<C-e>', [[compe#close('<C-e>')]], {expr = true})
+map('i', '<C-f>', [[compe#scroll({ 'delta': +4 })]], {expr = true})
+map('i', '<C-d>', [[compe#scroll({ 'delta': -4 })]], {expr = true})
+
+-- nvim-tree
+map('n', '<C-n>', [[<Cmd> :NvimTreeToggle<CR>]], opt)
+map('n', '<leader>r', [[<Cmd> :NvimTreeRefresh<CR>]], opt)
+map('n', '<leader>n', [[<Cmd> :NvimTreeFindFile<CR>]], opt)
 
 -- Telescope
 
@@ -81,3 +91,8 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 
 -- ZenMode
 map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
+
+-- nvim-toggleterm
+map('t', '<Esc>', [[<C-\><C-n>]], opt)
+map('n', '<C-t>', [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
+map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
