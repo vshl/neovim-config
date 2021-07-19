@@ -6,12 +6,21 @@ return packer.startup(function()
   use 'wbthomason/packer.nvim'
 
   -- lua plugins
-  use 'norcalli/nvim.lua'
-  use 'norcalli/nvim-base16.lua'
+  use {
+    'norcalli/nvim-base16.lua',
+    requires = { 'norcalli/nvim.lua' },
+    config = function()
+      local nvim = require 'nvim'
+      local base16 = require 'base16'
+      base16(base16.themes[nvim.env.BASE16_THEME or '3024'], true)
+    end
+  }
   use {
     'norcalli/nvim-colorizer.lua',
     ft = { 'haml', 'css', 'scss', 'javascript' },
-    config = [[ require('colorizer').setup { 'haml', 'css', 'scss', 'javascript', html = { names = false} }]],
+    config = function()
+      require('plugins.colorizer').config()
+    end
   }
   use {
     'lewis6991/gitsigns.nvim',
@@ -125,8 +134,6 @@ return packer.startup(function()
   -- other plugins
   use {
     'junegunn/fzf.vim',
-    cmd = { 'Files', 'Buffers', 'Tags', 'Lines', 'BTags', 'Rg' },
-    opt = true,
     requires = {
       {
         'junegunn/fzf',
