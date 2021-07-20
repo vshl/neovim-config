@@ -142,7 +142,7 @@ return packer.startup(function()
     'junegunn/vim-slash',
     event = 'BufRead'
   }
-  use { 
+  use {
     'tpope/vim-sleuth',
     event = 'BufRead'
   }

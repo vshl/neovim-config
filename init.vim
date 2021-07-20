@@ -131,20 +131,6 @@ nnoremap <leader>s :set spell!<CR>
 " Fix spelling
 nnoremap <leader>fs 1z=
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " default location
-if executable(s:clip)
-  augroup WSLYank
-    autocmd!
-    autocmd TextYankPost * call system(s:clip, join(v:event.regcontents, "\<CR>"))
-  augroup END
-end
-
 " indent_blankline
 let g:indent_blankline_space_char = '.'
 
-" packer
-augroup Packer
-  autocmd!
-  autocmd BufWritePost $PWD/lua/plugins/packer.lua PackerCompile
-augroup end
