@@ -134,18 +134,30 @@ return packer.startup(function()
   -- other plugins
   use {
     'junegunn/fzf.vim',
-    requires = {
-      {
-        'junegunn/fzf',
-        run = function() vim.fn['fzf#install']() end
-      }
-    }
+    event = 'VimEnter',
+    opt = true,
+    requires = { { 'junegunn/fzf' } }
   }
-  use 'junegunn/vim-slash'
-  use 'tpope/vim-sleuth'
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-repeat'
+  use {
+    'junegunn/vim-slash',
+    event = 'BufRead'
+  }
+  use { 
+    'tpope/vim-sleuth',
+    event = 'BufRead'
+  }
+  use {
+    'tpope/vim-commentary',
+    event = 'BufRead'
+  }
+  use {
+    'tpope/vim-surround',
+    event = 'BufRead'
+  }
+  use {
+    'tpope/vim-repeat',
+    event = 'BufRead'
+  }
   use {
     'tpope/vim-fugitive',
     cmd = { 'Git', 'Gdiff', 'Gclog' }
@@ -155,7 +167,13 @@ return packer.startup(function()
     'lervag/vimtex',
     ft = { 'tex' },
   }
-  use 'tommcdo/vim-lion'
-  use 'jamessan/vim-gnupg'
+  use {
+    'tommcdo/vim-lion',
+    event = 'BufRead'
+  }
+  use {
+    'jamessan/vim-gnupg',
+    event = 'BufRead'
+  }
   -- use 'kassio/neoterm'
 end)
