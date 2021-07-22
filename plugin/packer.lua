@@ -175,5 +175,9 @@ return packer.startup(function()
     'jamessan/vim-gnupg',
     event = 'BufRead'
   }
+  use {
+    'kkoomen/vim-doge',
+    run = function() vim.fn['doge#install']() end
+  }
   -- use 'kassio/neoterm'
 end)
