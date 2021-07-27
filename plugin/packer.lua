@@ -66,7 +66,10 @@ return packer.startup(function()
   }
   use {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'BufRead'
+    event = 'BufRead',
+    config = function()
+      vim.g.indent_blankline_space_char = '.'
+    end
   }
   use {
     'hrsh7th/nvim-compe',
@@ -140,10 +143,6 @@ return packer.startup(function()
     requires = { { 'junegunn/fzf' } }
   }
   use {
-    'junegunn/vim-slash',
-    event = 'BufRead'
-  }
-  use {
     'tpope/vim-sleuth',
     event = 'BufRead'
   }
@@ -178,7 +177,7 @@ return packer.startup(function()
   }
   use {
     'kkoomen/vim-doge',
+    event = 'BufRead',
     run = function() vim.fn['doge#install']() end
   }
-  -- use 'kassio/neoterm'
 end)

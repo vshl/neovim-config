@@ -97,3 +97,15 @@ map('t', '<Esc>', [[<C-\><C-n>]], opt)
 map('n', '<C-t>', [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
 map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
 vim.cmd[[ command! -nargs=1 TE TermExec cmd=<q-args> ]]
+
+-- FZF
+map('n', '<C-p>', [[<Cmd>Files<CR>]], opt)
+map('n', '<leader>bu', [[<Cmd>Buffers<CR>]], opt)
+map('n', '<leader>li', [[<Cmd>Lines<CR>]], opt)
+map('n', '<leader>ta', [[<Cmd>Tags<CR>]], opt)
+map('n', '<leader>bt', [[<Cmd>BTags<CR>]], opt)
+map('n', '<leader>rg', [[<Cmd>Rg<CR>]], opt)
+
+-- Misc
+map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
+map('n', '<leader>fs', [[1z=]], opt)

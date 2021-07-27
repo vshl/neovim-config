@@ -1,59 +1,3 @@
-" lua/init.lua
-lua require 'init'
-
-" Mouse support
-set mouse=a
-
-" Ignore case and smart case in ex mode
-set ignorecase
-set smartcase
-
-" fold method
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-
-" Line numbers
-set number
-set relativenumber
-
-" completion
-set shortmess+=c
-set completeopt=menuone,noselect
-
-" don't abandon buffers
-set hidden
-
-" Highlight the current line
-set cursorline
-
-" Column wrap at column 80
-set colorcolumn=+1
-
-" Show whitespaces
-if &encoding == 'utf-8'
-  set list listchars=tab:▸\ ,eol:¬,trail:.
-endif
-
-" Set clipboard
-set clipboard=unnamed
-
-" Identation
-
-set expandtab shiftwidth=2 softtabstop=2 tabstop=4 textwidth=120
-set modeline
-
-" Set inccommand
-set inccommand=nosplit
-
-" Set nvim to true color
-if has('termguicolors')
-  set termguicolors
-endif
-
-"################################
-" Plugins start here
-"################################
-
 " FZF
 " Command for git grep
 " - fzf#vim#grep(command, with_column, [options], [fullscreen])
@@ -114,23 +58,4 @@ function! FloatingFZF(width, height, border_highlight)
 endfunction
 
 let g:fzf_layout = { 'window': 'call FloatingFZF(0.9, 0.6, "Comment")' }
-
-" Additional keybindings
-"
-nnoremap <silent> <c-p> :Files<CR>
-
-nnoremap <silent> <leader>bu :Buffers<CR>
-nnoremap <silent> <leader>li :Lines<CR>
-nnoremap <silent> <leader>ta :Tags<CR>
-nnoremap <silent> <leader>bt :BTags<CR>
-nnoremap <silent> <leader>rg :Rg<CR>
-
-" Toggle spellcheck
-nnoremap <leader>s :set spell!<CR>
-
-" Fix spelling
-nnoremap <leader>fs 1z=
-
-" indent_blankline
-let g:indent_blankline_space_char = '.'
 
