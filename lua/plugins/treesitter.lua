@@ -3,8 +3,8 @@ local ts = {}
 ts.config = function()
   local tsconfig = require('nvim-treesitter.configs')
   tsconfig.setup {
-    ensure_installed = { 'ruby', 'lua', 'bash', 'javascript', 'json', 'yaml', 'python' },
-    ignore_install = { 'html' },
+    ensure_installed = { 'ruby', 'lua', 'bash', 'javascript', 'json', 'yaml', 'python', 'scss', 'html' },
+    ignore_install = {},
     highlight = {
       enable = true
     },
