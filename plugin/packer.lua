@@ -40,9 +40,9 @@ return packer.startup(function()
     end
   }
   use {
-    'famiu/feline.nvim',
+    'hoob3rt/lualine.nvim',
     config = function()
-      require('feline').setup()
+      require('plugins.statusline').config()
     end
   }
   use {
