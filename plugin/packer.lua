@@ -162,7 +162,10 @@ return packer.startup(function()
     'tpope/vim-fugitive',
     cmd = { 'Git', 'Gdiff', 'Gclog' }
   }
-  use 'tmux-plugins/vim-tmux'
+  use {
+    'tmux-plugins/vim-tmux',
+    ft = { 'tmux' }
+  }
   use {
     'lervag/vimtex',
     ft = { 'tex' },
@@ -179,5 +182,9 @@ return packer.startup(function()
     'kkoomen/vim-doge',
     event = 'BufRead',
     run = function() vim.fn['doge#install']() end
+  }
+  use {
+    'ludovicchabant/vim-gutentags',
+    ft = { 'ruby', 'python', 'javascript' }
   }
 end)
