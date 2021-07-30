@@ -54,6 +54,10 @@ return packer.startup(function()
       require('plugins.treesitter').config()
     end
   }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = '0.5-compat',
+    after = 'nvim-treesitter'
+  }
   use {
     'kabouzeid/nvim-lspinstall',
     requires = {
