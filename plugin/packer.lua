@@ -138,6 +138,10 @@ return packer.startup(function()
       }
     end
   }
+  use {
+    'b3nj5m1n/kommentary',
+    event = 'BufRead'
+  }
 
   -- other plugins
   use {
@@ -148,10 +152,6 @@ return packer.startup(function()
   }
   use {
     'tpope/vim-sleuth',
-    event = 'BufRead'
-  }
-  use {
-    'tpope/vim-commentary',
     event = 'BufRead'
   }
   use {
