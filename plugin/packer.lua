@@ -142,14 +142,27 @@ return packer.startup(function()
     'b3nj5m1n/kommentary',
     event = 'BufRead'
   }
+  use {
+    'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    config = function()
+      require('plugins.telescope').config()
+    end
+  }
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    before = 'telescope.nvim'
+  }
+  use {
+  'sudormrfbin/cheatsheet.nvim',
+  before = 'telescope.nvim',
+  requires = {
+    { 'nvim-lua/popup.nvim', opt = true },
+  }
+}
 
   -- other plugins
-  use {
-    'junegunn/fzf.vim',
-    event = 'VimEnter',
-    opt = true,
-    requires = { { 'junegunn/fzf' } }
-  }
   use {
     'tpope/vim-sleuth',
     event = 'BufRead'
