@@ -54,7 +54,8 @@ return packer.startup(function()
       require('plugins.treesitter').config()
     end
   }
-  use { 'nvim-treesitter/nvim-treesitter-textobjects',
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
     branch = '0.5-compat',
     after = 'nvim-treesitter'
   }
@@ -76,45 +77,42 @@ return packer.startup(function()
     end
   }
   use {
-    'hrsh7th/nvim-compe',
-    event = 'InsertEnter',
-    wants = 'LuaSnip',
+    'onsails/lspkind-nvim',
+    before = 'nvim-cmp',
+    config = function()
+      require('lspkind').init()
+    end
+  }
+  use {
+    'hrsh7th/nvim-cmp',
     config = function()
       require('plugins.completion').config()
     end,
     requires = {
-      {
-        'L3MON4D3/LuaSnip',
-        event = 'InsertCharPre',
-        wants = 'friendly-snippets',
-        config = function()
-          require("plugins.completion").snippets()
-        end
-      },
-      {
-        'rafamadriz/friendly-snippets',
-        after = 'LuaSnip'
-      }
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-calc' },
+      { 'hrsh7th/cmp-nvim-lua', ft = 'lua' },
+      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' }
     }
   }
   use {
+    'L3MON4D3/LuaSnip',
+    before = 'nvim-cmp',
+    requires =  { 'rafamadriz/friendly-snippets', opt = true }
+  }
+  use {
     'windwp/nvim-autopairs',
-    after = 'nvim-compe',
+    after = 'nvim-cmp',
     config = function()
       require('nvim-autopairs').setup()
-      require('nvim-autopairs.completion.compe').setup(
+      require('nvim-autopairs.completion.cmp').setup(
         {
           map_cr = true,
           map_complete = true -- insert () func completion
         }
       )
-    end
-  }
-  use {
-    'onsails/lspkind-nvim',
-    event = 'InsertCharPre',
-    config = function()
-      require('lspkind').init()
     end
   }
   use {

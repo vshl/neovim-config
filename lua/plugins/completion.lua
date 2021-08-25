@@ -1,50 +1,64 @@
+---@diagnostic disable: undefined-global
 local completion = {}
 
 completion.config = function()
-  require('compe').setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    resolve_timeout = 800;
-    incomplete_delay = 400;
-    max_abbr_width = 100;
-    max_kind_width = 100;
-    max_menu_width = 100;
-    documentation = {
-      border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-      winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-      max_width = 120,
-      min_width = 60,
-      max_height = math.floor(vim.o.lines * 0.3),
-      min_height = 1,
-    };
+  local cmp = require('cmp')
+  local luasnip = require('luasnip')
+  cmp.setup {
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end
+    },
 
-    source = {
-      path = true;
-      buffer = true;
-      -- calc = true;
-      nvim_lsp = true;
-      -- nvim_lua = true;
-      -- vsnip = false;
-      -- ultisnips = false;
-      luasnip = true;
-    };
-  }
-end
+    -- You must set mapping if you want.
+    mapping = {
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      }),
+    ['<Tab>'] = function(fallback)
+      if vim.fn.pumvisible() == 1 then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+      elseif luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
+      else
+        fallback()
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if vim.fn.pumvisible() == 1 then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
+      elseif luasnip.jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
+      else
+        fallback()
+      end
+    end,
+    },
 
-completion.snippets = function()
-  local snip = require('luasnip')
-  snip.config.set_config(
-    {
-      history = true,
-      updateevents = "TextChanged,TextChangedI"
+    -- You should specify your *installed* sources.
+    sources = {
+      { name = 'buffer' },
+      { name = 'nvim_lsp' },
+      { name = 'luasnip'},
+      { name = 'path' },
+      { name = 'calc' },
+      { name = 'nvim_lua' }
+    },
+    formatting = {
+      format = function(entry, vim_item)
+        vim_item.kind = require('lspkind').presets.default[vim_item.kind]
+        return vim_item
+      end
     }
-  )
-  require("luasnip/loaders/from_vscode").load()
+  }
 end
 
 return completion
