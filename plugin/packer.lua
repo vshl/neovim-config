@@ -60,6 +60,14 @@ return packer.startup(function()
     after = 'nvim-treesitter'
   }
   use {
+    'nvim-treesitter/nvim-treesitter-refactor',
+    after = 'nvim-treesitter'
+  }
+  use {
+    'p00f/nvim-ts-rainbow',
+    after = 'nvim-treesitter'
+  }
+  use {
     'kabouzeid/nvim-lspinstall',
     requires = {
       'neovim/nvim-lspconfig',
@@ -78,7 +86,6 @@ return packer.startup(function()
   }
   use {
     'onsails/lspkind-nvim',
-    before = 'nvim-cmp',
     config = function()
       require('lspkind').init()
     end
@@ -99,7 +106,6 @@ return packer.startup(function()
   }
   use {
     'L3MON4D3/LuaSnip',
-    before = 'nvim-cmp',
     requires =  { 'rafamadriz/friendly-snippets', opt = true }
   }
   use {
@@ -143,18 +149,14 @@ return packer.startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
+    requires =  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     config = function()
       require('plugins.telescope').config()
     end
   }
   use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make',
-    before = 'telescope.nvim'
-  }
-  use {
   'sudormrfbin/cheatsheet.nvim',
-  before = 'telescope.nvim',
+  after = 'telescope.nvim',
   requires = {
     { 'nvim-lua/popup.nvim', opt = true },
   }

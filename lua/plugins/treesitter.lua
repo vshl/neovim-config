@@ -59,6 +59,20 @@ ts.config = function()
           ["dF"] = "@class.outer",
         }
       }
+    },
+    rainbow = {
+      enable = true,
+      extended_mode = true,
+      max_file_lines = nil
+    },
+    refactor = {
+      highlight_definitions = { enable = true },
+      highlight_current_scope = { enable = false },
+      smart_rename = {
+        enable = true,
+        keymaps = { smart_rename = "srn" }
+      },
+      navigation = { enable = false }
     }
   }
 end

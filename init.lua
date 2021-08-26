@@ -13,9 +13,6 @@ end
 --Incremental live completion
 vim.o.inccommand = 'nosplit'
 
---Set highlight on search
-vim.o.hlsearch = false
-
 --Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
