@@ -24,7 +24,8 @@ return packer.startup(function()
   }
   use {
     'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    event = 'BufRead',
+    requires = { 'nvim-lua/plenary.nvim', opt = true },
     config = function()
       require('gitsigns').setup()
     end
@@ -49,7 +50,7 @@ return packer.startup(function()
     'nvim-treesitter/nvim-treesitter',
     branch = '0.5-compat',
     run = ':TSUpdate',
-    event = 'BufRead',
+    after = 'nvim-lspconfig',
     config = function()
       require('plugins.treesitter').config()
     end
@@ -68,46 +69,45 @@ return packer.startup(function()
     after = 'nvim-treesitter'
   }
   use {
-    'kabouzeid/nvim-lspinstall',
-    requires = {
-      'neovim/nvim-lspconfig',
-      event = 'BufRead',
-    },
+    'neovim/nvim-lspconfig',
+    after = { 'cmp-nvim-lsp', 'nvim-lspinstall' },
     config = function()
       require('plugins.lsp').config()
     end
   }
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufRead',
-    config = function()
-      vim.g.indent_blankline_space_char = '.'
-    end
-  }
-  use {
-    'onsails/lspkind-nvim',
-    config = function()
-      require('lspkind').init()
-    end
-  }
+  use { 'kabouzeid/nvim-lspinstall', after = 'nvim-cmp' }
   use {
     'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    wants = { 'LuaSnip', 'lspkind-nvim' },
     config = function()
       require('plugins.completion').config()
     end,
     requires = {
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-calc' },
-      { 'hrsh7th/cmp-nvim-lua', ft = 'lua' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'LuaSnip' }
+      {
+        'L3MON4D3/LuaSnip',
+        opt = true,
+        wants = { 'friendly-snippets' },
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
+        end,
+        requires =  { 'rafamadriz/friendly-snippets', opt = true }
+      },
+      {
+        'onsails/lspkind-nvim',
+        opt = true,
+        config = function()
+          require('lspkind').init()
+        end
+      }
     }
   }
-  use {
-    'L3MON4D3/LuaSnip',
-    requires =  { 'rafamadriz/friendly-snippets', opt = true }
-  }
+  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-calc', after = 'nvim-cmp' }
+  use { 'hrsh7th/cmp-nvim-lua', ft = 'lua', after = 'nvim-cmp' }
+  use { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } }
   use {
     'windwp/nvim-autopairs',
     after = 'nvim-cmp',
@@ -119,6 +119,13 @@ return packer.startup(function()
           map_complete = true -- insert () func completion
         }
       )
+    end
+  }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    event = 'BufRead',
+    config = function()
+      vim.g.indent_blankline_space_char = '.'
     end
   }
   use {
