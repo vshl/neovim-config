@@ -44,10 +44,6 @@ else
   vim.o.clipboard = 'unnamed'
 end
 
--- Fold method
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-
 -- Completion
 vim.opt.shortmess:append('c')
 vim.opt.completeopt= { 'menuone', 'noselect' }
