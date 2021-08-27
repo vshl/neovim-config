@@ -2,7 +2,7 @@
 local packer = require('packer')
 local use = packer.use
 
-return packer.startup(function()
+return packer.startup({function()
   use 'wbthomason/packer.nvim'
 
   -- lua plugins
@@ -211,4 +211,11 @@ return packer.startup(function()
     'ludovicchabant/vim-gutentags',
     ft = { 'ruby', 'python', 'javascript' }
   }
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({border = 'single'})
+      end
+    }
+}})
