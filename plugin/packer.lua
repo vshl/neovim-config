@@ -162,12 +162,9 @@ return packer.startup({function()
     end
   }
   use {
-  'sudormrfbin/cheatsheet.nvim',
-  after = 'telescope.nvim',
-  requires = {
-    { 'nvim-lua/popup.nvim', opt = true },
+    'sudormrfbin/cheatsheet.nvim',
+    after = 'telescope.nvim'
   }
-}
 
   -- other plugins
   use {
