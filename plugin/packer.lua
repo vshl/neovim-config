@@ -41,7 +41,7 @@ return packer.startup({function()
     end
   }
   use {
-    'hoob3rt/lualine.nvim',
+    'shadmansaleh/lualine.nvim',
     config = function()
       require('plugins.statusline').config()
     end
