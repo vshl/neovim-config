@@ -196,8 +196,7 @@ return packer.startup({function()
     event = 'BufRead'
   }
   use {
-    'jamessan/vim-gnupg',
-    event = 'BufRead'
+    'jamessan/vim-gnupg'
   }
   use {
     'kkoomen/vim-doge',
