@@ -130,7 +130,10 @@ return packer.startup({function()
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' }
+    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
+    config = function()
+      require('nvim-tree').setup()
+    end
   }
   use {
     'folke/zen-mode.nvim',
