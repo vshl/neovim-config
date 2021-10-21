@@ -35,29 +35,22 @@ lsp.config = function()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
   local function setup_servers()
-    require('lspinstall').setup()
+    local lsp_installer = require('nvim-lsp-installer')
 
-    local lspconf = require('lspconfig')
-    local servers = require('lspinstall').installed_servers()
-
-    for _, server in pairs(servers) do
-      lspconf[server].setup {
+    lsp_installer.on_server_ready(function(server)
+      local opts = {
         on_attach = on_attach,
         capabilities = capabilities,
         flags = {
           debounce_text_changes = 500,
-        },
+        }
       }
-    end
+      server:setup(opts)
+      vim.cmd [[ do User LspAttachBuffers ]]
+    end)
   end
 
   setup_servers()
-
-  -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-  require('lspinstall').post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server
-  end
 
   -- replace the default lsp diagnostic letters with prettier symbols
   vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})

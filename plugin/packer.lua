@@ -70,12 +70,12 @@ return packer.startup({function()
   }
   use {
     'neovim/nvim-lspconfig',
-    after = { 'cmp-nvim-lsp', 'nvim-lspinstall' },
+    after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
     config = function()
       require('plugins.lsp').config()
     end
   }
-  use { 'kabouzeid/nvim-lspinstall', after = 'nvim-cmp' }
+  use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
   use {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
