@@ -46,7 +46,7 @@ end
 
 -- Completion
 vim.opt.shortmess:append('c')
-vim.opt.completeopt= { 'menuone', 'noselect' }
+vim.opt.completeopt= { 'menu', 'menuone', 'noselect' }
 
 -- Cursorline
 vim.o.cursorline = true
@@ -62,3 +62,5 @@ vim.o.modeline = true
 -- ColorColumn
 vim.opt.colorcolumn:append('+1')
 
+-- colorscheme
+vim.cmd [[colorscheme catppuccin]]
