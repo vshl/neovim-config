@@ -10,15 +10,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
---Incremental live completion
-vim.o.inccommand = 'nosplit'
-
 --Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
-
---Do not save when switching buffers
-vim.o.hidden = true
 
 --Enable mouse mode
 vim.o.mouse = 'a'
