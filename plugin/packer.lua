@@ -40,7 +40,7 @@ return packer.startup({function()
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require('plugins.statusline').config()
+      require('plugins.statusline')
     end
   }
   use {
