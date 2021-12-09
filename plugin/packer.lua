@@ -173,6 +173,15 @@ return packer.startup({function()
     'sudormrfbin/cheatsheet.nvim',
     after = 'telescope.nvim'
   }
+  use {
+    'simrat39/symbols-outline.nvim',
+    cmd = { 'SymbolsOutline' },
+    setup = function()
+      vim.g.symbols_outline = {
+        width = 50,
+      }
+    end
+  }
 
   -- other plugins
   use {

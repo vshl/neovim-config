@@ -51,3 +51,4 @@ vim.cmd[[ command! -nargs=1 TE TermExec cmd=<q-args> ]]
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
 map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
+map('n', '<F10>', [[<Cmd>SymbolsOutline<CR>]], opt)
