@@ -19,6 +19,7 @@ map('n', '<leader>n', [[<Cmd> :NvimTreeFindFile<CR>]], opt)
 
 map('n', '<leader>ff', [[<cmd>Telescope find_files<CR>]], opt)
 map('n', '<leader>fg', [[<cmd>Telescope live_grep<CR>]], opt)
+map('n', '<leader>gs', [[<cmd>Telescope grep_string<CR>]], opt)
 map('n', '<leader>fb', [[<cmd>Telescope buffers<CR>]], opt)
 map('n', '<leader>fh', [[<cmd>Telescope help_tags<CR>]], opt)
 map('n', '<leader>ds', [[<cmd>Telescope lsp_document_symbols<CR>]], opt)
