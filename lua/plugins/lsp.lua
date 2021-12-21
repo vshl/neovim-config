@@ -29,6 +29,16 @@ lsp.config = function()
     buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+
+    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    for type, icon in pairs(signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
+
+    vim.diagnostic.config({
+      virtual_text = false
+    })
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -46,17 +56,12 @@ lsp.config = function()
         }
       }
       server:setup(opts)
+
       vim.cmd [[ do User LspAttachBuffers ]]
     end)
   end
 
   setup_servers()
-
-  -- replace the default lsp diagnostic letters with prettier symbols
-  vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
-  vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-  vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
 end
 
 return lsp
