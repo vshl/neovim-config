@@ -177,6 +177,13 @@ return packer.startup({function()
       }
     end
   }
+  use {
+    'folke/trouble.nvim',
+    cmd = { 'TroubleToggle' },
+    config = function()
+      require('trouble').setup()
+    end
+  }
 
   -- other plugins
   use {
