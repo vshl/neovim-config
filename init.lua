@@ -55,6 +55,3 @@ vim.o.modeline = true
 
 -- ColorColumn
 vim.opt.colorcolumn:append('+1')
-
--- colorscheme
-vim.cmd [[colorscheme catppuccin]]
