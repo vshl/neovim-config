@@ -73,6 +73,10 @@ return packer.startup({function()
       require('plugins.lsp').config()
     end
   }
+  use {
+    'folke/lsp-colors.nvim',
+    after = { 'nvim-lspconfig' }
+  }
   use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
   use {
     'hrsh7th/nvim-cmp',
