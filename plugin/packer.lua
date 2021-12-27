@@ -67,6 +67,20 @@ return packer.startup({function()
     after = 'nvim-treesitter'
   }
   use {
+    'romgrk/nvim-treesitter-context',
+    after = 'nvim-treesitter',
+    config = function()
+      require('treesitter-context').setup()
+    end
+  }
+  use {
+    'SmiteshP/nvim-gps',
+    after = 'nvim-treesitter',
+    config = function()
+      require('nvim-gps').setup()
+    end
+  }
+  use {
     'neovim/nvim-lspconfig',
     after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
     config = function()
