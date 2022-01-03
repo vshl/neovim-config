@@ -39,7 +39,6 @@ lsp.config = function()
     vim.diagnostic.config({
       virtual_text = false
     })
-    vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
