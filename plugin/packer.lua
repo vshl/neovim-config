@@ -136,13 +136,6 @@ return packer.startup({function()
     end
   }
   use {
-    'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
-    config = function()
-      require('nvim-tree').setup()
-    end
-  }
-  use {
     'folke/zen-mode.nvim',
     cmd = { 'ZenMode' }
   }
@@ -169,14 +162,22 @@ return packer.startup({function()
   use {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
-    requires =  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     config = function()
       require('plugins.telescope').config()
     end
   }
   use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    before = 'telescope.nvim'
+  }
+  use {
+    'nvim-telescope/telescope-file-browser.nvim',
+    before = 'telescope.nvim'
+  }
+  use {
     'sudormrfbin/cheatsheet.nvim',
-    after = 'telescope.nvim'
+    before = 'telescope.nvim'
   }
   use {
     'simrat39/symbols-outline.nvim',

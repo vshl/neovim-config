@@ -10,17 +10,13 @@ end
 
 local opt = {}
 
--- nvim-tree
-map('n', '<C-n>', [[<Cmd> :NvimTreeToggle<CR>]], opt)
-map('n', '<leader>r', [[<Cmd> :NvimTreeRefresh<CR>]], opt)
-map('n', '<leader>n', [[<Cmd> :NvimTreeFindFile<CR>]], opt)
-
 -- Telescope
 
 map('n', '<leader>ff', [[<cmd>Telescope find_files<CR>]], opt)
-map('n', '<leader>fg', [[<cmd>Telescope live_grep<CR>]], opt)
+map('n', '<leader>lg', [[<cmd>Telescope live_grep<CR>]], opt)
 map('n', '<leader>gs', [[<cmd>Telescope grep_string<CR>]], opt)
-map('n', '<leader>fb', [[<cmd>Telescope buffers<CR>]], opt)
+map('n', '<leader>bf', [[<cmd>Telescope buffers<CR>]], opt)
+map('n', '<leader>fb', [[<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>]], opt)
 map('n', '<leader>fh', [[<cmd>Telescope help_tags<CR>]], opt)
 map('n', '<leader>ds', [[<cmd>Telescope lsp_document_symbols<CR>]], opt)
 map('n', '<leader>ws', [[<cmd>Telescope lsp_workspace_symbols<CR>]], opt)
