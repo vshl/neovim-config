@@ -162,9 +162,9 @@ return packer.startup({function()
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cmd = { 'Telescope' } },
-      { 'nvim-telescope/telescope-file-browser.nvim', cmd = { 'Telescope' } },
-      { 'sudormrfbin/cheatsheet.nvim', cmd = { 'Telescope' } }
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
+      { 'sudormrfbin/cheatsheet.nvim' }
     },
     cmd = { 'Telescope' },
     config = function()
@@ -185,6 +185,13 @@ return packer.startup({function()
     cmd = { 'TroubleToggle' },
     config = function()
       require('trouble').setup()
+    end
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
+    config = function()
+      require('nvim-tree').setup()
     end
   }
 
