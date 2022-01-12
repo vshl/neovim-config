@@ -167,7 +167,7 @@ return packer.startup({function()
     end
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'nvim-telescope/telescope-file-browser.nvim', cmd = { 'Telescope' } }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'sudormrfbin/cheatsheet.nvim', after = 'telescope.nvim' }
   use {
     'simrat39/symbols-outline.nvim',
