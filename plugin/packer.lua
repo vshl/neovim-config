@@ -161,16 +161,14 @@ return packer.startup({function()
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {
-      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-      { 'nvim-telescope/telescope-file-browser.nvim' },
-      { 'sudormrfbin/cheatsheet.nvim' }
-    },
     cmd = { 'Telescope' },
     config = function()
       require('plugins.telescope').config()
     end
   }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-file-browser.nvim', cmd = { 'Telescope' } }
+  use { 'sudormrfbin/cheatsheet.nvim', after = 'telescope.nvim' }
   use {
     'simrat39/symbols-outline.nvim',
     cmd = { 'SymbolsOutline' },
