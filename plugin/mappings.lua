@@ -11,11 +11,6 @@ end
 local opt = {}
 
 
--- nvim-tree
-map('n', '<C-n>', [[<Cmd> :NvimTreeToggle<CR>]], opt)
-map('n', '<leader>r', [[<Cmd> :NvimTreeRefresh<CR>]], opt)
-map('n', '<leader>n', [[<Cmd> :NvimTreeFindFile<CR>]], opt)
-
 -- Telescope
 
 map('n', '<leader>ff', [[<cmd>Telescope find_files<CR>]], opt)

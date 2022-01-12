@@ -187,13 +187,6 @@ return packer.startup({function()
       require('trouble').setup()
     end
   }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
-    config = function()
-      require('nvim-tree').setup()
-    end
-  }
 
   -- other plugins
   use {
