@@ -27,7 +27,7 @@ return packer.startup({function()
     event = 'BufRead',
     requires = { 'nvim-lua/plenary.nvim', opt = true },
     config = function()
-      require('gitsigns').setup()
+      require('plugins.gitsigns').config()
     end
   }
   use {

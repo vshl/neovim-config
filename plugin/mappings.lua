@@ -36,8 +36,8 @@ map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
 vim.cmd[[ command! -nargs=1 TE TermExec cmd=<q-args> ]]
 
 -- trouble.nvim
-map('n', '<leader>tw', [[<cmd>TroubleToggle workspace_diagnostics<CR>]], opt)
-map('n', '<leader>td', [[<cmd>TroubleToggle document_diagnostics<CR>]], opt)
+map('n', '<leader>dw', [[<cmd>TroubleToggle workspace_diagnostics<CR>]], opt)
+map('n', '<leader>dd', [[<cmd>TroubleToggle document_diagnostics<CR>]], opt)
 
 -- Misc
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
