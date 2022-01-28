@@ -2,6 +2,13 @@ local t = {}
 
 t.config = function()
   require('telescope').setup {
+    defaults = {
+      layout_config = {
+         horizontal = {
+            prompt_position = 'top'
+         }
+      }
+    },
     extensions = {
       fzf = {
         fuzzy = true,                    -- false will only do exact matching
