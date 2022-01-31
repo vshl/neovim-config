@@ -169,15 +169,7 @@ return packer.startup({function()
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'sudormrfbin/cheatsheet.nvim', after = 'telescope.nvim' }
-  use {
-    'simrat39/symbols-outline.nvim',
-    cmd = { 'SymbolsOutline' },
-    setup = function()
-      vim.g.symbols_outline = {
-        width = 50,
-      }
-    end
-  }
+  use { 'stevearc/aerial.nvim' }
   use {
     'folke/trouble.nvim',
     cmd = { 'TroubleToggle' },

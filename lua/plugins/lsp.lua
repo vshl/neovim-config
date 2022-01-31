@@ -36,6 +36,8 @@ lsp.config = function()
     vim.diagnostic.config({
       virtual_text = false
     })
+
+    require('aerial').on_attach(client, buffnr)
   end
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
