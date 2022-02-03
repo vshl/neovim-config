@@ -212,10 +212,6 @@ return packer.startup({function()
     ft = { 'tex' },
   }
   use {
-    'tommcdo/vim-lion',
-    event = 'BufRead'
-  }
-  use {
     'jamessan/vim-gnupg'
   }
   use {
