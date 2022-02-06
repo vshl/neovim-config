@@ -80,7 +80,10 @@ ts.config = function()
         goto_next_usage = "<a-*>",
         goto_previous_usage = "<a-#>",
       }
-    }
+    },
+    endwise = {
+      enable = true,
+    },
   }
 end
 

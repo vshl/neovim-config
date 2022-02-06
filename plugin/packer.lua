@@ -63,6 +63,10 @@ return packer.startup({function()
     after = 'nvim-treesitter'
   }
   use {
+    'RRethy/nvim-treesitter-endwise',
+    after = 'nvim-treesitter'
+  }
+  use {
     'p00f/nvim-ts-rainbow',
     after = 'nvim-treesitter'
   }
