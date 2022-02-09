@@ -25,6 +25,7 @@ map('n', '<leader>ws', [[<cmd>Telescope lsp_workspace_symbols<CR>]], opt)
 map('n', '<leader>ld', [[<cmd>Telescope lsp_document_diagnostics<CR>]], opt)
 map('n', '<leader>cm', [[<cmd>Telescope commands<CR>]], opt)
 map('n', '<leader>km', [[<cmd>Telescope keymaps<CR>]], opt)
+map('n', '<leader>co', [[<cmd>Telescope git_commits<CR>]], opt)
 
 -- ZenMode
 map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
