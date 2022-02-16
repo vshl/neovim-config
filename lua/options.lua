@@ -35,13 +35,9 @@ vim.opt.completeopt= { 'menu', 'menuone', 'noselect' }
 -- Cursorline
 vim.o.cursorline = true
 
--- Identation
+-- Formatting
 vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
-vim.o.tabstop = 4
 vim.o.textwidth = 120
-vim.o.modeline = true
 
 -- ColorColumn
 vim.opt.colorcolumn:append('+1')
