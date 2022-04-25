@@ -56,7 +56,7 @@ lsp.config = function()
       }
       server:setup(opts)
 
-      vim.cmd [[ do User LspAttachBuffers ]]
+      vim.api.nvim_create_user_command('AttachBuffers', 'LspAttachBuffers', {})
     end)
   end
 

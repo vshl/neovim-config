@@ -1,3 +1,4 @@
-vim.cmd(
-  [[autocmd! FileType python setlocal nosmartindent]]
-)
+vim.api.nvim_create_autocmd( { "FileType" }, {
+  pattern = { "*.py", "*.pyi" },
+  command = "setlocal nosmartindent"
+})

@@ -42,13 +42,11 @@ vim.o.textwidth = 120
 -- ColorColumn
 vim.opt.colorcolumn:append('+1')
 
--- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd[[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
-augroup END
-]]
+vim.api.nvim_create_autocmd("TextYankPost", {
+    pattern = "*",
+    callback = function() vim.highlight.on_yank() end,
+    desc = "Highlight yank",
+})
 
 --Global statusline
 vim.opt.laststatus = 3
