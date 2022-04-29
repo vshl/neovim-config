@@ -43,24 +43,21 @@ lsp.config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-  local function setup_servers()
-    local lsp_installer = require('nvim-lsp-installer')
+  local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'pyright' }
+  require('nvim-lsp-installer').setup {
+    ensured_installed = servers,
+    automatic_installation = true
+  }
 
-    lsp_installer.on_server_ready(function(server)
-      local opts = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = {
-          debounce_text_changes = 500,
-        }
+  for _, server in ipairs(servers) do
+    require('lspconfig')[server].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      flags = {
+        debounce_text_changes = 500,
       }
-      server:setup(opts)
-
-      vim.api.nvim_create_user_command('AttachBuffers', 'LspAttachBuffers', {})
-    end)
+    }
   end
-
-  setup_servers()
 end
 
 return lsp
