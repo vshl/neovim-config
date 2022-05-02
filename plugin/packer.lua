@@ -6,40 +6,10 @@ return packer.startup({function()
   use 'wbthomason/packer.nvim'
 
   -- lua plugins
-  use {
-    'norcalli/nvim-base16.lua',
-    requires = { 'norcalli/nvim.lua' },
-    config = function()
-      local nvim = require 'nvim'
-      local base16 = require 'base16'
-      base16(base16.themes[nvim.env.BASE16_THEME or '3024'], true)
-    end
-  }
-  use {
-    'norcalli/nvim-colorizer.lua',
-    ft = { 'haml', 'css', 'scss', 'javascript' },
-    config = function()
-      require('plugins.colorizer').config()
-    end
-  }
-  use {
-    'lewis6991/gitsigns.nvim',
-    event = 'BufRead',
-    requires = { 'nvim-lua/plenary.nvim', opt = true },
-    config = function()
-      require('plugins.gitsigns').config()
-    end
-  }
-  use {
-    'akinsho/nvim-bufferline.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      opt = true
-    },
-    config = function()
-      require('bufferline').setup()
-    end
-  }
+  require('plugins.base16')
+  require('plugins.colorizer')
+  require('plugins.gitsigns')
+  require('plugins.bufferline')
   use {
     'nvim-lualine/lualine.nvim',
     config = function()
