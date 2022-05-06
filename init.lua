@@ -12,3 +12,4 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('options')
+require('autocommands')

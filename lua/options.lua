@@ -42,11 +42,5 @@ vim.o.textwidth = 120
 -- ColorColumn
 vim.opt.colorcolumn:append('+1')
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-    pattern = "*",
-    callback = function() vim.highlight.on_yank() end,
-    desc = "Highlight yank",
-})
-
 --Global statusline
 vim.opt.laststatus = 3

@@ -9,6 +9,7 @@ return packer.startup({function()
   require('plugins.base16')
   require('plugins.colorizer')
   require('plugins.gitsigns')
+  require('plugins.git-conflict')
   require('plugins.bufferline')
   use {
     'nvim-lualine/lualine.nvim',
