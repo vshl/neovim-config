@@ -23,6 +23,8 @@ return packer.startup({function()
   require('plugins.trouble')
   require('plugins.notification')
   require('plugins.aerial')
+
+  -- other plugins
   require('plugins.other')
 end,
   config = {
