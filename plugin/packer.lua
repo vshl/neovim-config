@@ -11,91 +11,10 @@ return packer.startup({function()
   require('plugins.gitsigns')
   require('plugins.git-conflict')
   require('plugins.bufferline')
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('plugins.statusline')
-    end
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    after = 'nvim-lspconfig',
-    config = function()
-      require('plugins.treesitter').config()
-    end
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter'
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter-refactor',
-    after = 'nvim-treesitter'
-  }
-  use {
-    'RRethy/nvim-treesitter-endwise',
-    after = 'nvim-treesitter'
-  }
-  use {
-    'p00f/nvim-ts-rainbow',
-    after = 'nvim-treesitter'
-  }
-  use {
-    'SmiteshP/nvim-gps',
-    after = 'nvim-treesitter',
-    config = function()
-      require('nvim-gps').setup()
-    end
-  }
-  use {
-    'neovim/nvim-lspconfig',
-    after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
-    config = function()
-      require('plugins.lsp').config()
-    end
-  }
-  use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
-  use {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    wants = { 'LuaSnip', 'lspkind-nvim' },
-    config = function()
-      require('plugins.completion').config()
-    end,
-    requires = {
-      {
-        'L3MON4D3/LuaSnip',
-        opt = true,
-        wants = { 'friendly-snippets' },
-        config = function()
-          require('luasnip.loaders.from_vscode').lazy_load()
-        end,
-        requires =  { 'rafamadriz/friendly-snippets', opt = true }
-      },
-      {
-        'onsails/lspkind-nvim',
-        opt = true,
-        config = function()
-          require('lspkind').init()
-        end
-      }
-    }
-  }
-  use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-calc', after = 'nvim-cmp' }
-  use { 'hrsh7th/cmp-nvim-lua', ft = 'lua', after = 'nvim-cmp' }
-  use { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' } }
-  use {
-    'windwp/nvim-autopairs',
-    after = 'nvim-cmp',
-    config = function()
-      require('nvim-autopairs').setup()
-      require('plugins.completion').autopairs()
-    end
-  }
+  require('plugins.statusline')
+  require('plugins.treesitter')
+  require('plugins.lsp')
+  require('plugins.completion')
   use {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufRead',

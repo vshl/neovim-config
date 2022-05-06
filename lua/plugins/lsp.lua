@@ -1,63 +1,68 @@
-local lsp = {}
+local use = require('packer').use
 
-lsp.config = function()
-  local on_attach = function(client, buffnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(buffnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(buffnr, ...) end
+use {
+  'neovim/nvim-lspconfig',
+  after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
+  config = function()
+    local on_attach = function(client, buffnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(buffnr, ...) end
 
-    --Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-    -- Mappings.
-    local opts = { noremap=true, silent=true }
+      local function buf_set_option(...) vim.api.nvim_buf_set_option(buffnr, ...) end
 
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+      --Enable completion triggered by <c-x><c-o>
+      buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+      -- Mappings.
+      local opts = { noremap = true, silent = true }
 
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+      buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+      buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+      buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+      buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+      buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+      buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+      buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+      buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+      buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+      buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+      buf_set_keymap('n', '<leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+      buf_set_keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+
+      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
+
+      vim.diagnostic.config({
+        virtual_text = false
+      })
+
+      require('aerial').on_attach(client, buffnr)
     end
 
-    vim.diagnostic.config({
-      virtual_text = false
-    })
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-    require('aerial').on_attach(client, buffnr)
-  end
-
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-  local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'pyright' }
-  require('nvim-lsp-installer').setup {
-    ensured_installed = servers,
-    automatic_installation = true
-  }
-
-  for _, server in ipairs(servers) do
-    require('lspconfig')[server].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      flags = {
-        debounce_text_changes = 500,
-      }
+    local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'pyright' }
+    require('nvim-lsp-installer').setup {
+      ensured_installed = servers,
+      automatic_installation = true
     }
-  end
-end
 
-return lsp
+    for _, server in ipairs(servers) do
+      require('lspconfig')[server].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = {
+          debounce_text_changes = 500,
+        }
+      }
+    end
+  end
+}
+
+use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
