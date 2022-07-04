@@ -6,6 +6,7 @@ return packer.startup({function()
   use 'wbthomason/packer.nvim'
 
   -- lua plugins
+  require('plugins.notification')
   require('plugins.base16')
   require('plugins.colorizer')
   require('plugins.gitsigns')
@@ -21,7 +22,6 @@ return packer.startup({function()
   require('plugins.comment')
   require('plugins.telescope')
   require('plugins.trouble')
-  require('plugins.notification')
   require('plugins.aerial')
 
   -- other plugins

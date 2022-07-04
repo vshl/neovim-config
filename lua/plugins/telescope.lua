@@ -2,7 +2,6 @@ local use = require('packer').use
 
 use {
   'nvim-telescope/telescope.nvim',
-  cmd = { 'Telescope' },
   config = function()
     require('telescope').setup {
       defaults = {
