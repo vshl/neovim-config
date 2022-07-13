@@ -6,10 +6,6 @@ use {
         event = 'BufRead'
 }
 use {
-        'tpope/vim-surround',
-        event = 'BufRead'
-}
-use {
         'tpope/vim-repeat',
         event = 'BufRead'
 }

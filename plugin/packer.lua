@@ -23,6 +23,7 @@ return packer.startup({function()
   require('plugins.telescope')
   require('plugins.trouble')
   require('plugins.aerial')
+  require('plugins.surround')
 
   -- other plugins
   require('plugins.other')
