@@ -1,8 +1,20 @@
 local use = require('packer').use
 
 use {
+  'williamboman/mason.nvim',
+  config = function()
+    require('mason').setup()
+  end
+}
+
+use {
+  'williamboman/mason-lspconfig.nvim',
+  after = 'mason.nvim'
+}
+
+use {
   'neovim/nvim-lspconfig',
-  after = { 'cmp-nvim-lsp', 'nvim-lsp-installer' },
+  after = { 'cmp-nvim-lsp', 'mason.nvim' },
   config = function()
     local on_attach = function(client, buffnr)
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(buffnr, ...) end
@@ -48,7 +60,7 @@ use {
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
     local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'pyright', 'tsserver' }
-    require('nvim-lsp-installer').setup {
+    require('mason-lspconfig').setup {
       ensured_installed = servers,
       automatic_installation = true
     }
@@ -64,5 +76,3 @@ use {
     end
   end
 }
-
-use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
