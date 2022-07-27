@@ -2,7 +2,6 @@ local use = require('packer').use
 
 use {
   'hrsh7th/nvim-cmp',
-  event = 'InsertEnter',
   wants = { 'LuaSnip', 'lspkind-nvim' },
   config = function()
     local cmp = require('cmp')
@@ -44,7 +43,6 @@ use {
   requires = {
     {
       'L3MON4D3/LuaSnip',
-      opt = true,
       wants = { 'friendly-snippets' },
       config = function()
         require('luasnip.loaders.from_vscode').lazy_load()
@@ -53,7 +51,6 @@ use {
     },
     {
       'onsails/lspkind-nvim',
-      opt = true,
       config = function()
         require('lspkind').init()
       end
