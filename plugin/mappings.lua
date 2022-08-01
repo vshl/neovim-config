@@ -44,15 +44,23 @@ map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
 map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
 
-require("aerial").setup({
-  on_attach = function(bufnr)
-    -- Toggle the aerial window with <leader>a
-    vim.keymap.set('n', '<F10>', '<cmd>AerialToggle!<CR>', { buffer = bufnr})
-    -- Jump forwards/backwards with '{' and '}'
-    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
-    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
-    -- Jump up the tree with '[[' or ']]'
-    vim.keymap.set('n', '[[', '<cmd>AerialPrevUp<CR>', { buffer = bufnr })
-    vim.keymap.set('n', ']]', '<cmd>AerialNextUp<CR>', { buffer = bufnr })
-  end
-})
+map('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', opt)
+map('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opt)
+map('v', '<leader>ca', '<cmd>Lspsaga range_code_action<CR>', opt)
+map('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
+local action = require("lspsaga.action")
+-- scroll down hover doc or scroll in definition preview
+map('n', '<C-f>', function()
+    action.smart_scroll_with_saga(1)
+end, { silent = true })
+-- scroll up hover doc
+map('n', '<C-b>', function()
+    action.smart_scroll_with_saga(-1)
+end, { silent = true })
+map('n', 'gs', '<Cmd>Lspsaga signature_help<CR>', opt)
+map('n', 'gr', '<Cmd>Lspsaga rename<CR>', opt)
+map('n', 'gd', '<Cmd>Lspsaga preview_definition<CR>', { silent = true })
+map('n', '<leader>e', '<Cmd>Lspsaga show_line_diagnostics<CR>', opt)
+map('n', '[e', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opt)
+map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opt)
+map('n', '<F10>', '<Cmd>LSoutlineToggle<CR>', opt)
