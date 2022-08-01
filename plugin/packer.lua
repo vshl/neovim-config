@@ -7,7 +7,6 @@ return packer.startup({function()
 
   -- lua plugins
   require('plugins.notification')
-  require('plugins.base16')
   require('plugins.colorizer')
   require('plugins.gitsigns')
   require('plugins.git-conflict')
@@ -23,6 +22,7 @@ return packer.startup({function()
   require('plugins.telescope')
   require('plugins.trouble')
   require('plugins.surround')
+  require('plugins.colorscheme')
 
   -- other plugins
   require('plugins.other')
