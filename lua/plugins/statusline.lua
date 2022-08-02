@@ -4,7 +4,7 @@ require('packer').use({
     -- Eviline config for lualine
     -- Author: shadmansaleh
     -- Credit: glepnir
-    local lualine = require 'lualine'
+    local lualine = require('lualine')
 
     -- Color table for highlights
     -- stylua: ignore
@@ -24,13 +24,13 @@ require('packer').use({
 
     local conditions = {
       buffer_not_empty = function()
-        return vim.fn.empty(vim.fn.expand '%:t') ~= 1
+        return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
       end,
       hide_in_width = function()
         return vim.fn.winwidth(0) > 80
       end,
       check_git_workspace = function()
-        local filepath = vim.fn.expand '%:p:h'
+        local filepath = vim.fn.expand('%:p:h')
         local gitdir = vim.fn.finddir('.git', filepath .. ';')
         return gitdir and #gitdir > 0 and #gitdir < #filepath
       end,
@@ -49,7 +49,6 @@ require('packer').use({
           normal = { c = { fg = colors.fg, bg = colors.bg } },
           inactive = { c = { fg = colors.fg, bg = colors.bg } },
         },
-        globalstatus = true
       },
       sections = {
         -- these are to remove the defaults
@@ -64,7 +63,7 @@ require('packer').use({
       inactive_sections = {
         -- these are to remove the defaults
         lualine_a = {},
-        lualine_v = {},
+        lualine_b = {},
         lualine_y = {},
         lualine_z = {},
         lualine_c = { 'filename' },
@@ -93,6 +92,9 @@ require('packer').use({
     ins_left {
       -- mode component
       function()
+        return ''
+      end,
+      color = function()
         -- auto change color according to neovims mode
         local mode_color = {
           n = colors.red,
@@ -116,10 +118,8 @@ require('packer').use({
           ['!'] = colors.red,
           t = colors.red,
         }
-        vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
-        return ''
+        return { fg = mode_color[vim.fn.mode()] }
       end,
-      color = 'LualineMode',
       padding = { right = 1 },
     }
 
@@ -159,13 +159,23 @@ require('packer').use({
     }
 
     ins_left {
-      -- nvim-gps
+      -- Lsp server name .
       function()
-        local gps = require('nvim-gps')
-        if gps.is_available() then
-          return gps.get_location()
+        local msg = 'No Active Lsp'
+        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local clients = vim.lsp.get_active_clients()
+        if next(clients) == nil then
+          return msg
         end
+        for _, client in ipairs(clients) do
+          local filetypes = client.config.filetypes
+          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+            return client.name
+          end
+        end
+        return msg
       end,
+      icon = ' LSP:',
       color = { fg = '#ffffff', gui = 'bold' },
     }
 
@@ -193,7 +203,7 @@ require('packer').use({
     ins_right {
       'diff',
       -- Is it me or the symbol for modified us really weird
-      symbols = { added = ' ', modified = ' ', removed = ' ' },
+      symbols = { added = ' ', modified = '柳 ', removed = ' ' },
       diff_color = {
         added = { fg = colors.green },
         modified = { fg = colors.orange },
