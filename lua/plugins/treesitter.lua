@@ -107,10 +107,3 @@ use {
   'p00f/nvim-ts-rainbow',
   after = 'nvim-treesitter'
 }
-use {
-  'SmiteshP/nvim-gps',
-  after = 'nvim-treesitter',
-  config = function()
-    require('nvim-gps').setup()
-  end
-}
