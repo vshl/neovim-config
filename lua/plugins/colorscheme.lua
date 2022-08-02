@@ -1,6 +1,7 @@
 require('packer').use({
-  'glepnir/zephyr-nvim',
+  'EdenEast/nightfox.nvim',
   config = function()
-    require('zephyr')
-  end
+    vim.cmd [[colorscheme nightfox]]
+  end,
+  run = ':NightfoxCompile'
 })
