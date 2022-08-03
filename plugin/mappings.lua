@@ -39,6 +39,9 @@ map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
 map('n', '<leader>dw', [[<cmd>TroubleToggle workspace_diagnostics<CR>]], opt)
 map('n', '<leader>dd', [[<cmd>TroubleToggle document_diagnostics<CR>]], opt)
 
+-- Neogit
+map('n', '<leader>g', '<Cmd>Neogit<CR>', opt)
+
 -- Misc
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
