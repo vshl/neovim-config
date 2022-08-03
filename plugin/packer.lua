@@ -23,6 +23,7 @@ return packer.startup({function()
   require('plugins.trouble')
   require('plugins.surround')
   require('plugins.colorscheme')
+  require('plugins.git')
 
   -- other plugins
   require('plugins.other')
