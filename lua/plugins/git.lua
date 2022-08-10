@@ -1,4 +1,6 @@
-require('packer').use({
+local use = require('packer').use
+
+use({
   'lewis6991/gitsigns.nvim',
   event = 'BufRead',
   requires = { 'nvim-lua/plenary.nvim', opt = true },
@@ -43,5 +45,19 @@ require('packer').use({
         map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       end
     }
+  end
+})
+
+use({
+  'akinsho/git-conflict.nvim',
+  config = function ()
+    require('git-conflict').setup()
+  end
+})
+
+use({
+  'f-person/git-blame.nvim',
+  config = function()
+    vim.g.gitblame_enabled = 0
   end
 })
