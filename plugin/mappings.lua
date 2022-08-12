@@ -43,7 +43,6 @@ map('n', '<leader>dd', [[<cmd>TroubleToggle document_diagnostics<CR>]], opt)
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
 map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
-map('n', '<leader>gb', '<Cmd>GitBlameToggle<CR>')
 
 -- lspsaga
 map('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', opt)

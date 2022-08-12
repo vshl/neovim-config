@@ -54,10 +54,3 @@ use({
     require('git-conflict').setup()
   end
 })
-
-use({
-  'f-person/git-blame.nvim',
-  config = function()
-    vim.g.gitblame_enabled = 0
-  end
-})
