@@ -107,3 +107,7 @@ use {
   'p00f/nvim-ts-rainbow',
   after = 'nvim-treesitter'
 }
+use {
+  'nvim-treesitter/nvim-treesitter-context',
+  after = 'nvim-treesitter'
+}
