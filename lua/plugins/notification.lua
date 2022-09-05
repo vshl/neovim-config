@@ -3,5 +3,6 @@ require('packer').use({
         config = function()
                 require('notify').setup()
                 vim.notify = require('notify')
-        end
+        end,
+        requires = { 'nvim-lua/plenary.nvim' }
 })

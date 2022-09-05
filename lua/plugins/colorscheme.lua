@@ -1,7 +1,12 @@
 require('packer').use({
   'EdenEast/nightfox.nvim',
   config = function()
-    vim.cmd [[colorscheme nightfox]]
+    require('nightfox').setup {
+      options = {
+        dim_inactive = true
+      }
+    }
+    vim.cmd [[colorscheme nordfox]]
   end,
   run = ':NightfoxCompile'
 })

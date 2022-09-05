@@ -3,7 +3,6 @@ local use = require('packer').use
 use({
   'lewis6991/gitsigns.nvim',
   event = 'BufRead',
-  requires = { 'nvim-lua/plenary.nvim', opt = true },
   config = function()
     require('gitsigns').setup {
       on_attach = function(bufnr)
