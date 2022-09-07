@@ -48,8 +48,6 @@ use({
 })
 
 use({
-  'akinsho/git-conflict.nvim',
-  config = function ()
-    require('git-conflict').setup()
-  end
+  'sindrets/diffview.nvim',
+  cmd = 'DiffviewOpen'
 })

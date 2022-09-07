@@ -25,7 +25,7 @@ map('n', '<leader>ws', [[<cmd>Telescope lsp_workspace_symbols<CR>]], opt)
 map('n', '<leader>ld', [[<cmd>Telescope lsp_document_diagnostics<CR>]], opt)
 map('n', '<leader>cm', [[<cmd>Telescope commands<CR>]], opt)
 map('n', '<leader>km', [[<cmd>Telescope keymaps<CR>]], opt)
-map('n', '<leader>co', [[<cmd>Telescope git_commits<CR>]], opt)
+map('n', '<leader>gc', [[<cmd>Telescope git_commits<CR>]], opt)
 
 -- ZenMode
 map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
@@ -56,3 +56,7 @@ map('n', '<leader>e', '<Cmd>Lspsaga show_line_diagnostics<CR>', opt)
 map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opt)
 map('n', '[e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opt)
 map('n', '<F10>', '<Cmd>LSoutlineToggle<CR>', opt)
+
+-- Diffview
+map('n', '<leader>do', '<CMD>DiffviewOpen<CR>', opt)
+map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
