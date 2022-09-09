@@ -14,6 +14,10 @@ vim.api.nvim_create_user_command('AcuityRun', function()
     require('FTerm').run('scripts/bootstrap.sh')
 end, { bang = true })
 
+vim.api.nvim_create_user_command('AcuityDebug', function()
+    require('FTerm').run('scripts/bootstrap.sh', '--debug')
+end, { bang = true })
+
 vim.api.nvim_create_user_command('DbMigrateAll', function()
     require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails devops:db_alter[db:migrate,all]'} })
 end, { bang = true })
