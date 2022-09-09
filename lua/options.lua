@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-global
-
 --Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true

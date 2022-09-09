@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 -- install packer.nvim retroactively
 
 local execute = vim.api.nvim_command
@@ -12,4 +11,4 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('options')
-require('autocommands')
+require('commands')

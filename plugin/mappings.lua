@@ -1,5 +1,3 @@
----@diagnostic disable: undefined-global
-
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true, silent = true}
   if opts then
@@ -30,10 +28,9 @@ map('n', '<leader>gc', [[<cmd>Telescope git_commits<CR>]], opt)
 -- ZenMode
 map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
 
--- nvim-toggleterm
-map('t', '<Esc>', [[<C-\><C-n>]], opt)
-map('n', '<C-t>', [[<Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
-map('i', '<C-t>', [[<Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>]], opt)
+-- FTerm.nvim
+map('n', '<A-i>', '<CMD>FTermToggle<CR>')
+map('t', '<A-i>', '<C-\\><C-n><CMD>FTermToggle<CR>')
 
 -- trouble.nvim
 map('n', '<leader>dw', [[<cmd>TroubleToggle workspace_diagnostics<CR>]], opt)
