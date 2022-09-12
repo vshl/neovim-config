@@ -41,19 +41,6 @@ map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
 map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
 
--- lspsaga
-map('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', opt)
-map('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', opt)
-map('v', '<leader>ca', '<cmd>Lspsaga range_code_action<CR>', opt)
-map('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
-map('n', 'gs', '<Cmd>Lspsaga signature_help<CR>', opt)
-map('n', 'gr', '<Cmd>Lspsaga rename<CR>', opt)
--- map('n', 'gd', '<Cmd>Lspsaga preview_definition<CR>', { silent = true })
-map('n', '<leader>e', '<Cmd>Lspsaga show_line_diagnostics<CR>', opt)
-map('n', ']e', '<Cmd>Lspsaga diagnostic_jump_next<CR>', opt)
-map('n', '[e', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', opt)
-map('n', '<F10>', '<Cmd>LSoutlineToggle<CR>', opt)
-
 -- Diffview
 map('n', '<leader>do', '<CMD>DiffviewOpen<CR>', opt)
 map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
