@@ -21,3 +21,11 @@ end, { bang = true })
 vim.api.nvim_create_user_command('DbMigrateAll', function()
     require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails devops:db_alter[db:migrate,all]'} })
 end, { bang = true })
+
+vim.api.nvim_create_user_command('UpdateActions', function()
+    require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails devops:update_actions'} })
+end, { bang = true })
+
+vim.api.nvim_create_user_command('RebuildViews', function()
+    require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails db:rebuild_views[all]'} })
+end, { bang = true })
