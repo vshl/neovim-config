@@ -22,6 +22,7 @@ return packer.startup({function()
   require('plugins.trouble')
   require('plugins.surround')
   require('plugins.colorscheme')
+  require('plugins.focus')
 
   -- other plugins
   require('plugins.other')

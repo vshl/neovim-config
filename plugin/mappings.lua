@@ -44,3 +44,14 @@ map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
 -- Diffview
 map('n', '<leader>do', '<CMD>DiffviewOpen<CR>', opt)
 map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
+
+-- focus.nvim
+map('n', '<c-l>', ':FocusSplitNicely<CR>', opt)
+local focusmap = function(direction)
+    map('n', "<A-" ..direction..">", ":lua require'focus'.split_command('"..direction.."')<CR>", opt)
+end
+-- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
+focusmap('h')
+focusmap('j')
+focusmap('k')
+focusmap('l')
