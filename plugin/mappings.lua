@@ -47,6 +47,7 @@ map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
 
 -- focus.nvim
 map('n', '<c-l>', ':FocusSplitNicely<CR>', opt)
+map('n', '<A-f>', ':FocusToggle<CR>', opt)
 local focusmap = function(direction)
     map('n', "<A-" ..direction..">", ":lua require'focus'.split_command('"..direction.."')<CR>", opt)
 end
