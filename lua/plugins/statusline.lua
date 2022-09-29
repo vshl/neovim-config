@@ -20,6 +20,7 @@ require('packer').use({
         lualine_c = {
           {
             'filename',
+            path = 1,
             symbols = {
               modified = '●',
               readonly = ''
