@@ -15,7 +15,7 @@ vim.api.nvim_create_user_command('AcuityRun', function()
 end, { bang = true })
 
 vim.api.nvim_create_user_command('AcuityDebug', function()
-    require('FTerm').run('scripts/bootstrap.sh', '--debug')
+    require('FTerm').run({'scripts/bootstrap.sh', '--debug'})
 end, { bang = true })
 
 vim.api.nvim_create_user_command('DbMigrateAll', function()
