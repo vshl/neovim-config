@@ -12,6 +12,29 @@ use {
           }
         }
       },
+      pickers = {
+        live_grep = {
+          theme = "ivy"
+        },
+        grep_string = {
+          theme = "ivy"
+        },
+        buffers = {
+          theme = "dropdown"
+        },
+        lsp_document_symbols = {
+          theme = "dropdown"
+        },
+        lsp_workspace_symbols = {
+          theme = "dropdown"
+        },
+        diagnostics = {
+          theme = "dropdown"
+        },
+        keymaps = {
+          theme = "dropdown"
+        }
+      },
       extensions = {
         fzf = {
           fuzzy = true, -- false will only do exact matching
