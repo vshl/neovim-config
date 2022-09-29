@@ -20,7 +20,8 @@ map('n', '<leader>fp', [[<cmd>lua require 'telescope'.extensions.file_browser.fi
 map('n', '<leader>fh', [[<cmd>Telescope help_tags<CR>]], opt)
 map('n', '<leader>ds', [[<cmd>Telescope lsp_document_symbols<CR>]], opt)
 map('n', '<leader>ws', [[<cmd>Telescope lsp_workspace_symbols<CR>]], opt)
-map('n', '<leader>ld', [[<cmd>Telescope lsp_document_diagnostics<CR>]], opt)
+map('n', '<leader>ld', [[<cmd>Telescope diagnostics buffnr=0<CR>]], opt)
+map('n', '<leader>lw', [[<cmd>Telescope diagnostics<CR>]], opt)
 map('n', '<leader>cm', [[<cmd>Telescope commands<CR>]], opt)
 map('n', '<leader>km', [[<cmd>Telescope keymaps<CR>]], opt)
 map('n', '<leader>gc', [[<cmd>Telescope git_commits<CR>]], opt)
@@ -31,10 +32,6 @@ map('n', '<leader>z', [[<Cmd> ZenMode<CR>]], opt)
 -- FTerm.nvim
 map('n', '<A-i>', '<CMD>FTermToggle<CR>')
 map('t', '<A-i>', '<C-\\><C-n><CMD>FTermToggle<CR>')
-
--- trouble.nvim
-map('n', '<leader>dw', [[<cmd>TroubleToggle workspace_diagnostics<CR>]], opt)
-map('n', '<leader>dd', [[<cmd>TroubleToggle document_diagnostics<CR>]], opt)
 
 -- Misc
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
@@ -56,3 +53,8 @@ focusmap('h')
 focusmap('j')
 focusmap('k')
 focusmap('l')
+
+-- diagnostics
+map('n', '[d', vim.diagnostic.goto_prev, opt)
+map('n', ']d', vim.diagnostic.goto_next, opt)
+map('n', '<space>q', vim.diagnostic.setloclist, opt)
