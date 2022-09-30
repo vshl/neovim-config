@@ -35,6 +35,7 @@ return packer.startup({function()
   require('plugins.surround')
   require('plugins.colorscheme')
   require('plugins.focus')
+  require('plugins.hlslens')
 
   -- other plugins
   require('plugins.other')

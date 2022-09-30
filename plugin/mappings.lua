@@ -36,7 +36,7 @@ map('t', '<A-i>', '<C-\\><C-n><CMD>FTermToggle<CR>')
 -- Misc
 map('n', '<leader>s', [[<Cmd>set spell!<CR>]], opt)
 map('n', '<leader>fs', [[1z=]], opt)
-map('n', '<Esc>', [[<Cmd>:nohlsearch<CR>]], opt)
+map('n', '<space>c', ':nohlsearch<CR>', opt)
 
 -- Diffview
 map('n', '<leader>do', '<CMD>DiffviewOpen<CR>', opt)
