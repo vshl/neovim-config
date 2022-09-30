@@ -1,12 +1,9 @@
 require('packer').use({
-  'EdenEast/nightfox.nvim',
+  'rebelot/kanagawa.nvim',
   config = function()
-    require('nightfox').setup {
-      options = {
-        dim_inactive = true
-      }
-    }
-    vim.cmd [[colorscheme nordfox]]
-  end,
-  run = ':NightfoxCompile'
+    require('kanagawa').setup({
+      dimInactive = true
+    })
+    vim.cmd [[colorscheme kanagawa]]
+  end
 })
