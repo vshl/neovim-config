@@ -48,17 +48,17 @@ require('packer').use({
               modified = '●',
               readonly = ''
             }
-          },
-          {
-            'diagnostics',
-            sources = { 'nvim_lsp' },
-            symbols = { error = ' ', warn = ' ', info = ' ' }
           }
         },
         lualine_b = {
           {
             'filetype',
             icon_only = true
+          },
+          {
+            'diagnostics',
+            sources = { 'nvim_lsp' },
+            symbols = { error = ' ', warn = ' ', info = ' ' }
           }
         },
         lualine_c = {
