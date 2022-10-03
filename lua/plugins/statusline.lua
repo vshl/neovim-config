@@ -47,7 +47,8 @@ require('packer').use({
             symbols = {
               modified = '●',
               readonly = ''
-            }
+            },
+            separator = { left = '', right = ''}
           }
         },
         lualine_b = {
