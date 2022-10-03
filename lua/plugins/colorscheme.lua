@@ -4,6 +4,6 @@ require('packer').use({
     require('kanagawa').setup({
       dimInactive = true
     })
-    vim.cmd [[colorscheme kanagawa]]
+    vim.cmd('colorscheme kanagawa')
   end
 })
