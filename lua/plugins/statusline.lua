@@ -4,6 +4,7 @@ require('packer').use({
     'kyazdani42/nvim-web-devicons'
   },
   config = function()
+    local navic = require('nvim-navic')
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -39,13 +40,7 @@ require('packer').use({
         lualine_c = {}
       },
       winbar = {
-        lualine_b = {
-          {
-            'filetype',
-            icon_only = true
-          }
-        },
-        lualine_c = {
+        lualine_a = {
           {
             'filename',
             path = 1,
@@ -59,6 +54,15 @@ require('packer').use({
             sources = { 'nvim_lsp' },
             symbols = { error = ' ', warn = ' ', info = ' ' }
           }
+        },
+        lualine_b = {
+          {
+            'filetype',
+            icon_only = true
+          }
+        },
+        lualine_c = {
+          { navic.get_location, cond = navic.is_available }
         }
       },
       inactive_winbar = {

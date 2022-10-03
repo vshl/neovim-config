@@ -12,6 +12,10 @@ use {
 }
 
 use {
+  'SmiteshP/nvim-navic',
+}
+
+use {
   'neovim/nvim-lspconfig',
   after = { 'cmp-nvim-lsp' },
   config = function()
@@ -52,6 +56,11 @@ use {
       vim.diagnostic.config({
         virtual_text = false
       })
+
+      local navic = require('nvim-navic')
+      if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, buffnr)
+      end
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
