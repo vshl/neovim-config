@@ -44,4 +44,4 @@ vim.opt.colorcolumn:append('+1')
 -- vim.opt.laststatus = 3
 
 -- Cmdheight
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
