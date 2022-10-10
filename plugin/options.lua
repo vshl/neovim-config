@@ -41,7 +41,7 @@ vim.o.textwidth = 120
 vim.opt.colorcolumn:append('+1')
 
 --Global statusline
--- vim.opt.laststatus = 3
+vim.opt.laststatus = 3
 
 -- Cmdheight
 -- vim.opt.cmdheight = 0

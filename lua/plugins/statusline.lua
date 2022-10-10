@@ -26,7 +26,7 @@ require('packer').use({
             symbols = { added = ' ', modified = ' ', removed = ' ' }
           }
         },
-        lualine_c = {},
+        lualine_c = { 'buffers' },
         lualine_x = { 'encoding', 'fileformat' },
         lualine_y = { 'progress' },
         lualine_z = {
@@ -48,7 +48,7 @@ require('packer').use({
               modified = '●',
               readonly = ''
             },
-            separator = { left = '', right = ''}
+            separator = { left = '', right = '' }
           }
         },
         lualine_b = {
@@ -59,7 +59,10 @@ require('packer').use({
           {
             'diagnostics',
             sources = { 'nvim_lsp' },
-            symbols = { error = ' ', warn = ' ', info = ' ' }
+            symbols = { error = ' ', warn = ' ', info = ' ' },
+            on_click = function()
+              vim.cmd('Telescope diagnostics buffnr=0')
+            end
           }
         },
         lualine_c = {
