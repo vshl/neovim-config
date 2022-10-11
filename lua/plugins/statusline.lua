@@ -5,6 +5,23 @@ require('packer').use({
   },
   config = function()
     local navic = require('nvim-navic')
+    -- Lsp server name .
+    local function server_name()
+      local msg = 'No Active Lsp'
+      local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+      local clients = vim.lsp.get_active_clients()
+      if next(clients) == nil then
+        return msg
+      end
+      for _, client in ipairs(clients) do
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+          return client.name
+        end
+      end
+      return msg
+    end
+
     require('lualine').setup {
       options = {
         icons_enabled = true,
@@ -20,12 +37,7 @@ require('packer').use({
             separator = { left = '' }, right_padding = 2
           }
         },
-        lualine_b = { 'branch',
-          {
-            'diff',
-            symbols = { added = ' ', modified = ' ', removed = ' ' }
-          }
-        },
+        lualine_b = {},
         lualine_c = { 'buffers' },
         lualine_x = { 'encoding', 'fileformat' },
         lualine_y = { 'progress' },
@@ -67,7 +79,20 @@ require('packer').use({
         },
         lualine_c = {
           { navic.get_location, cond = navic.is_available }
-        }
+        },
+        lualine_x = {
+          {
+            server_name,
+            icon = { ' ', color = { gui = 'bold' } }
+          }
+        },
+        lualine_y = {
+          {
+            'diff',
+            symbols = { added = ' ', modified = ' ', removed = ' ' }
+          }
+        },
+        lualine_z = { 'branch' }
       },
       inactive_winbar = {
         lualine_c = {
