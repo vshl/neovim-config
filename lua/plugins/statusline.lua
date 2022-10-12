@@ -34,7 +34,7 @@ require('packer').use({
         lualine_a = {
           {
             'mode',
-            separator = { left = '' }, right_padding = 2
+            separator = { left = '', right = '' }
           }
         },
         lualine_b = {},
@@ -60,7 +60,7 @@ require('packer').use({
               modified = '●',
               readonly = ''
             },
-            separator = { left = '', right = '' }
+            separator = { left = '' }
           }
         },
         lualine_b = {
