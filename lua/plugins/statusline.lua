@@ -31,22 +31,12 @@ require('packer').use({
         disabled_filetypes = {}
       },
       sections = {
-        lualine_a = {
-          {
-            'mode',
-            separator = { left = '', right = '' }
-          }
-        },
+        lualine_a = { 'mode' },
         lualine_b = {},
         lualine_c = { 'buffers' },
         lualine_x = { 'encoding', 'fileformat' },
         lualine_y = { 'progress' },
-        lualine_z = {
-          {
-            'location',
-            separator = { right = '', left_padding = 2 }
-          }
-        }
+        lualine_z = { 'location' }
       },
       inactive_sections = {
         lualine_c = {}
@@ -60,7 +50,6 @@ require('packer').use({
               modified = '●',
               readonly = ''
             },
-            separator = { left = '' }
           }
         },
         lualine_b = {
