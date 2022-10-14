@@ -58,3 +58,7 @@ focusmap('l')
 map('n', '[d', vim.diagnostic.goto_prev, opt)
 map('n', ']d', vim.diagnostic.goto_next, opt)
 map('n', '<space>q', vim.diagnostic.setloclist, opt)
+
+-- bufdelete.nvim
+map('n', '<space>d', '<CMD>Bdelete<CR>', opt)
+map('n', '<space>w', '<CMD>Bwipeout<CR>', opt)
