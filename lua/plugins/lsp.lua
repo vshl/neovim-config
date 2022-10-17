@@ -62,7 +62,7 @@ use {
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'pyright', 'tsserver' }
     require('mason-lspconfig').setup {
