@@ -2,6 +2,7 @@ require('packer').use {
   'kevinhwang91/nvim-hlslens',
   event = 'BufRead',
   config = function()
+    require('hlslens').setup()
     local kopts = {noremap = true, silent = true}
 
     vim.api.nvim_set_keymap('n', 'n',
