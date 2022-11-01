@@ -1,9 +1,20 @@
 require('packer').use({
-  'rebelot/kanagawa.nvim',
+  'catppuccin/nvim',
+  as = 'catppuccin',
   config = function()
-    require('kanagawa').setup({
-      dimInactive = true
-    })
-    vim.cmd('colorscheme kanagawa')
+    require('catppuccin').setup {
+      flavor = 'mocha',
+      dim_inactive = {
+        enabled = true
+      },
+      integrations = {
+        treesitter_context = true,
+        ts_rainbow = true,
+        navic = {
+          enabled = true
+        }
+      }
+    }
+    vim.cmd('colorscheme catppuccin')
   end
 })
