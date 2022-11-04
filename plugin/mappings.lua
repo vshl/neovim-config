@@ -11,7 +11,7 @@ local opt = {}
 
 -- Telescope
 
-map('n', '<leader>ff', '<CMD>Telescope find_files<CR>', opt)
+map('n', '<c-p>', '<CMD>Telescope find_files<CR>', opt)
 map('n', '<leader>lg', '<CMD>Telescope live_grep<CR>', opt)
 map('n', '<leader>gs', '<CMD>Telescope grep_string<CR>', opt)
 map('n', '<leader>bf', '<CMD>Telescope buffers<CR>', opt)
