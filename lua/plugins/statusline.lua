@@ -92,7 +92,8 @@ require('packer').use({
               readonly = ''
             },
           }
-        }
+        },
+        lualine_x = { 'location' }
       },
       extensions = { 'quickfix' }
     }
