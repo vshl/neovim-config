@@ -35,8 +35,8 @@ require('packer').use({
         lualine_b = {},
         lualine_c = { 'buffers' },
         lualine_x = { 'encoding', 'fileformat' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_y = {},
+        lualine_z = { 'branch' }
       },
       inactive_sections = {
         lualine_c = {}
@@ -73,21 +73,24 @@ require('packer').use({
           {
             server_name,
             icon = { ' ', color = { gui = 'bold' } }
-          }
-        },
-        lualine_y = {
+          },
           {
             'diff',
             symbols = { added = ' ', modified = ' ', removed = ' ' }
           }
         },
-        lualine_z = { 'branch' }
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
       },
       inactive_winbar = {
         lualine_c = {
           {
             'filename',
-            path = 1
+            path = 1,
+            symbols = {
+              modified = '●',
+              readonly = ''
+            },
           }
         }
       },
