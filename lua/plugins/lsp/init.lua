@@ -17,7 +17,6 @@ use {
 
 use {
   'neovim/nvim-lspconfig',
-  after = { 'cmp-nvim-lsp' },
   config = function()
     local on_attach = function(client, buffnr)
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(buffnr, ...) end
