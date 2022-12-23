@@ -1,4 +1,4 @@
-require('packer').use({
+return {
   'NvChad/nvim-colorizer.lua',
   ft = { 'haml', 'css', 'scss', 'javascript' },
   config = function()
@@ -12,4 +12,4 @@ require('packer').use({
       }
     }
   end
-})
+}

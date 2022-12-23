@@ -1,4 +1,4 @@
-require('packer').use({
+return {
   'famiu/bufdelete.nvim',
   cmd = { 'Bdelete', 'Bwipeout' }
-})
+}

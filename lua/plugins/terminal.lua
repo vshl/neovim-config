@@ -1,4 +1,4 @@
-require('packer').use({
+return {
   'numToStr/Fterm.nvim',
   config = function()
     local fterm = require("FTerm")
@@ -16,4 +16,4 @@ require('packer').use({
       lazygit:toggle()
     end)
   end
-})
+}

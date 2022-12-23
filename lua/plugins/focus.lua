@@ -1,7 +1,7 @@
-require('packer').use {
+return {
   'beauwilliams/focus.nvim',
   cmd = { 'FocusSplitNicely', 'FocusSplitCycle' },
-  module = 'focus',
+  name = 'focus',
   config = function()
     require('focus').setup({hybridnumber = true})
   end

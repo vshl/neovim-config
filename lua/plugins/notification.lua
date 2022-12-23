@@ -1,8 +1,8 @@
-require('packer').use({
+return {
         'rcarriga/nvim-notify',
+        dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
                 require('notify').setup()
                 vim.notify = require('notify')
-        end,
-        requires = { 'nvim-lua/plenary.nvim' }
-})
+        end
+}

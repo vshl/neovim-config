@@ -1,4 +1,4 @@
-require('packer').use {
+return {
   'kevinhwang91/nvim-hlslens',
   event = 'BufRead',
   config = function()

@@ -1,6 +1,4 @@
-local use = require('packer').use
-
-use({
+return {
   'lewis6991/gitsigns.nvim',
   event = 'BufRead',
   config = function()
@@ -45,9 +43,4 @@ use({
       end
     }
   end
-})
-
-use({
-  'sindrets/diffview.nvim',
-  cmd = 'DiffviewOpen'
-})
+}
