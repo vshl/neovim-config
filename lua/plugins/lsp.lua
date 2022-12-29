@@ -52,13 +52,20 @@ M.config = function()
   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
   local servers = { 'solargraph', 'sumneko_lua', 'bashls', 'jsonls', 'yamlls', 'tsserver', 'marksman', 'sqlls' }
+  local mason_lspconfig = require('mason-lspconfig')
+  mason_lspconfig.setup({
+    ensured_installed = servers,
+    automatic_installation = true
+  })
 
   for _, server in ipairs(servers) do
-    require('lspconfig')[server].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      flags = {
-        debounce_text_changes = 500,
+    mason_lspconfig.setup_handlers {
+      require('lspconfig')[server].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        flags = {
+          debounce_text_changes = 500,
+        }
       }
     }
   end
