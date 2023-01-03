@@ -5,7 +5,6 @@ local M = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-refactor',
     'RRethy/nvim-treesitter-endwise',
-    'p00f/nvim-ts-rainbow',
     'nvim-treesitter/nvim-treesitter-context'
   }
 }
