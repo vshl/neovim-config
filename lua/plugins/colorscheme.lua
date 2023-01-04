@@ -1,9 +1,16 @@
 return {
-        'folke/tokyonight.nvim',
+       'marko-cerovac/material.nvim',
         config = function()
-                require('tokyonight').setup({
-                        dim_inactive = true
+                require('material').setup({
+                        plugins = {
+                                'gitsigns',
+                                'indent-blankline',
+                                'nvim-cmp',
+                                'nvim-navic',
+                                'nvim-web-devicons',
+                                'telescope'
+                        }
                 })
-                vim.cmd('colorscheme tokyonight')
+                vim.cmd('colorscheme material')
         end
 }
