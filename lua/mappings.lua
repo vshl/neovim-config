@@ -63,3 +63,6 @@ map('n', '<space>q', vim.diagnostic.setloclist, opt)
 -- bufdelete.nvim
 map('n', '<space>d', '<CMD>Bdelete<CR>', opt)
 map('n', '<space>w', '<CMD>Bwipeout<CR>', opt)
+
+-- ts-node-action
+map('n', '<space>n', require("ts-node-action").node_action, { desc = "Trigger Node Action" }, opt)
