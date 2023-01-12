@@ -1,17 +1,20 @@
 local M = {
-  'folke/zen-mode.nvim',
-  dependencies = {
-    'folke/twilight.nvim'
-  },
-  cmd = 'ZenMode'
+        'folke/zen-mode.nvim',
+        dependencies = {
+                'folke/twilight.nvim'
+        },
+        cmd = 'ZenMode'
 }
 
 M.config = function()
-  require('zen-mode').setup {
-    plugins = {
-      twilight = false,
-    }
-  }
+        require('zen-mode').setup {
+                window = {
+                        width = 0.40
+                },
+                plugins = {
+                        twilight = false,
+                }
+        }
 end
 
 return M
