@@ -6,6 +6,8 @@ local M = {
   }
 }
 
+M.priority = 100
+
 M.config = function()
   local navic = require('nvim-navic')
   -- Lsp server name .
