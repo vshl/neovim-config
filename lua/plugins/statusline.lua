@@ -1,7 +1,8 @@
 local M = {
   'nvim-lualine/lualine.nvim',
   dependencies = {
-    'kyazdani42/nvim-web-devicons'
+    'kyazdani42/nvim-web-devicons',
+    'nord.nvim'
   }
 }
 
@@ -27,7 +28,7 @@ M.config = function()
   require('lualine').setup {
     options = {
       icons_enabled = true,
-      theme = 'nord',
+      theme = 'auto',
       component_separators = '|',
       section_separators = { left = '', right = '' },
       disabled_filetypes = {}
