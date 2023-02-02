@@ -27,7 +27,8 @@ map('n', '<leader>km', '<CMD>Telescope keymaps<CR>', opt)
 map('n', '<leader>gc', '<CMD>Telescope git_commits<CR>', opt)
 
 -- ZenMode
-map('n', '<leader>z', '<CMD>NoNeckPain<CR>', opt)
+map('n', '<leader>z', '<CMD>ZenMode<CR>', opt)
+map('n', '<leader>zt', '<CMD>Twilight<CR>', opt)
 
 -- FTerm.nvim
 map('n', '<A-i>', '<CMD>FTermToggle<CR>')
