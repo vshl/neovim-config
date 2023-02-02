@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
+  local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
@@ -16,7 +16,8 @@ map('n', '<leader>lg', '<CMD>Telescope live_grep<CR>', opt)
 map('n', '<leader>gs', '<CMD>Telescope grep_string<CR>', opt)
 map('n', '<leader>bf', '<CMD>Telescope buffers<CR>', opt)
 map('n', '<leader>fb', '<CMD>Telescope file_browser<CR>', opt)
-map('n', '<leader>fp', "<CMD>lua require 'telescope'.extensions.file_browser.file_browser({path = vim.fn.expand('%:p:h')})<CR>", opt)
+map('n', '<leader>fp',
+  "<CMD>lua require 'telescope'.extensions.file_browser.file_browser({path = vim.fn.expand('%:p:h')})<CR>", opt)
 map('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opt)
 map('n', '<leader>ds', '<CMD>Telescope lsp_document_symbols<CR>', opt)
 map('n', '<leader>ws', '<CMD>Telescope lsp_workspace_symbols<CR>', opt)
@@ -47,7 +48,7 @@ map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
 map('n', '<c-l>', '<CMD>FocusSplitNicely<CR>', opt)
 map('n', '<A-f>', '<CMD>FocusToggle<CR>', opt)
 local focusmap = function(direction)
-    map('n', "<A-" ..direction..">", ":lua require'focus'.split_command('"..direction.."')<CR>", opt)
+  map('n', "<A-" .. direction .. ">", ":lua require'focus'.split_command('" .. direction .. "')<CR>", opt)
 end
 -- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
 focusmap('h')
@@ -65,4 +66,4 @@ map('n', '<space>d', '<CMD>Bdelete<CR>', opt)
 map('n', '<space>w', '<CMD>Bwipeout<CR>', opt)
 
 -- ts-node-action
-map('n', '<space>n', require("ts-node-action").node_action, { desc = "Trigger Node Action" }, opt)
+map('n', '<space>n', require("ts-node-action").node_action, { desc = "Trigger Node Action" })
