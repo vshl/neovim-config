@@ -1,9 +1,10 @@
 local M = {
-        'nvim-lualine/lualine.nvim',
-        dependencies = {
-                'kyazdani42/nvim-web-devicons',
-                'nord.nvim'
-        }
+        'nvim-lualine/lualine.nvim'
+}
+
+M.dependencies = {
+        'kyazdani42/nvim-web-devicons',
+        'nord.nvim'
 }
 
 M.priority = 100
