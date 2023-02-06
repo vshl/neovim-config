@@ -10,7 +10,6 @@ M.dependencies = {
 M.priority = 100
 
 M.config = function()
-        local navic = require('nvim-navic')
         -- Lsp server name .
         local function server_name()
                 local msg = 'No Active Lsp'
@@ -41,7 +40,6 @@ M.config = function()
                         lualine_b = {
                                 {
                                         'filename',
-                                        path = 1,
                                         symbols = {
                                                 modified = '●',
                                                 readonly = ''
@@ -79,7 +77,6 @@ M.config = function()
                         lualine_c = {
                                 {
                                         'filename',
-                                        path = 1,
                                         symbols = {
                                                 modified = '●',
                                                 readonly = ''
