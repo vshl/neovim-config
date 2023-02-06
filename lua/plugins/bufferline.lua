@@ -4,5 +4,6 @@ return {
         requires = 'nvim-web-devicons',
         config = function()
                 require('bufferline').setup()
-        end
+        end,
+        event = 'BufEnter'
 }
