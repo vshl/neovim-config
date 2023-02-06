@@ -5,5 +5,5 @@ return {
         config = function()
                 require('bufferline').setup()
         end,
-        event = 'BufEnter'
+        event = 'BufRead'
 }

@@ -8,5 +8,6 @@ return {
   },
   config = function()
     require('barbecue').setup()
-  end
+  end,
+  event = 'BufRead'
 }
