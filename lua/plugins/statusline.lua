@@ -36,7 +36,7 @@ M.config = function()
                         disabled_filetypes = {}
                 },
                 sections = {
-                        lualine_a = { 'mode' },
+                        lualine_a = { 'branch', 'mode' },
                         lualine_b = {
                                 {
                                         'filename',
@@ -72,7 +72,7 @@ M.config = function()
                                 }
                         },
                         lualine_y = { 'encoding', 'fileformat' },
-                        lualine_z = { 'location', 'progress', 'branch' }
+                        lualine_z = { 'location', 'progress' }
                 },
                 inactive_sections = {
                         lualine_a = {},
