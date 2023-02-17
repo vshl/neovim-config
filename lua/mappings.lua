@@ -67,3 +67,8 @@ map('n', '<space>w', '<CMD>Bwipeout<CR>', opt)
 
 -- ts-node-action
 map('n', '<space>n', require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+
+-- rest.nvim
+map('n', '<space>r', '<Plug>RestNvim', opt)
+map('n', '<leader>rp', '<Plug>RestNvim', opt)
+map('n', '<leader>rl', '<Plug>RestNvimLast', opt)
