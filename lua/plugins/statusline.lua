@@ -31,13 +31,16 @@ M.config = function()
                 options = {
                         icons_enabled = true,
                         theme = 'auto',
-                        component_separators = '|',
                         section_separators = { left = '', right = '' },
                         disabled_filetypes = {}
                 },
                 sections = {
                         lualine_a = { 'branch', 'mode' },
                         lualine_b = {
+                                {
+                                        'filetype',
+                                        icon_only = true
+                                },
                                 {
                                         'filename',
                                         symbols = {
@@ -47,10 +50,6 @@ M.config = function()
                                 }
                         },
                         lualine_c = {
-                                {
-                                        'filetype',
-                                        icon_only = true
-                                },
                                 {
                                         'diagnostics',
                                         sources = { 'nvim_lsp' },
