@@ -73,7 +73,8 @@ M.config = function()
                         lualine_z = { 'location', 'progress' }
                 },
                 inactive_sections = {
-                        lualine_c = {
+                        lualine_c = {},
+                        lualine_b = {
                                 {
                                         'filename',
                                         symbols = {
@@ -81,7 +82,9 @@ M.config = function()
                                                 readonly = ''
                                         }
                                 }
-                        }
+                        },
+                        lualine_x = {},
+                        lualine_y = { 'location' }
                 },
                 extensions = { 'quickfix' }
         }
