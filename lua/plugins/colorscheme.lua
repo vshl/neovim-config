@@ -1,8 +1,10 @@
 return {
-        'shaunsingh/nord.nvim',
+        'uloco/bluloco.nvim',
+        lazy = false,
+        priority = 1000,
+        dependencies = { 'rktjmp/lush.nvim' },
         config = function()
-                vim.g.nord_contrast = true
-                vim.g.nord_borders = true
-                require('nord').set()
-        end
+                require('bluloco').setup {}
+                vim.cmd('colorscheme bluloco')
+        end,
 }

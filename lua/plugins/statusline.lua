@@ -3,8 +3,7 @@ local M = {
 }
 
 M.dependencies = {
-        'kyazdani42/nvim-web-devicons',
-        'nord.nvim'
+        'kyazdani42/nvim-web-devicons'
 }
 
 M.priority = 100
