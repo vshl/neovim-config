@@ -44,17 +44,25 @@ map('n', '<space>c', '<CMD>nohlsearch<CR>', opt)
 map('n', '<leader>do', '<CMD>DiffviewOpen<CR>', opt)
 map('n', '<leader>dc', '<CMD>DiffviewClose<CR>', opt)
 
--- focus.nvim
-map('n', '<c-l>', '<CMD>FocusSplitNicely<CR>', opt)
-map('n', '<A-f>', '<CMD>FocusToggle<CR>', opt)
-local focusmap = function(direction)
-  map('n', "<A-" .. direction .. ">", ":lua require'focus'.split_command('" .. direction .. "')<CR>", opt)
-end
--- Use `<Leader>h` to split the screen to the left, same as command FocusSplitLeft etc
-focusmap('h')
-focusmap('j')
-focusmap('k')
-focusmap('l')
+-- smart-splits
+-- recommended mappings
+-- resizing splits
+-- these keymaps will also accept a range,
+-- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+map('n', '<A-h>', require('smart-splits').resize_left, opt)
+map('n', '<A-j>', require('smart-splits').resize_down, opt)
+map('n', '<A-k>', require('smart-splits').resize_up, opt)
+map('n', '<A-l>', require('smart-splits').resize_right, opt)
+-- moving between splits
+map('n', '<C-h>', require('smart-splits').move_cursor_left, opt)
+map('n', '<C-j>', require('smart-splits').move_cursor_down, opt)
+map('n', '<C-k>', require('smart-splits').move_cursor_up, opt)
+map('n', '<C-l>', require('smart-splits').move_cursor_right, opt)
+-- swapping buffers between windows
+map('n', '<leader><leader>h', require('smart-splits').swap_buf_left, opt)
+map('n', '<leader><leader>j', require('smart-splits').swap_buf_down, opt)
+map('n', '<leader><leader>k', require('smart-splits').swap_buf_up, opt)
+map('n', '<leader><leader>l', require('smart-splits').swap_buf_right, opt)
 
 -- diagnostics
 map('n', '[d', vim.diagnostic.goto_prev, opt)
