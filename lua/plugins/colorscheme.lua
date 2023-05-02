@@ -1,17 +1,11 @@
 return {
-        'marko-cerovac/material.nvim',
+        'Mofiqul/dracula.nvim',
         lazy = false,
         priority = 1000,
         config = function()
-                require('material').setup({
-                        contrast = {
-                                terminal = true,
-                                sidebars = true,
-                                floating_windows = true,
-                                non_current_windows = true
-                        }
+                require('dracula').setup({
+                        italic_comment = true
                 })
-                vim.g.material_style = 'darker'
-                vim.cmd('colorscheme material')
+                vim.cmd('colorscheme dracula')
         end
 }
