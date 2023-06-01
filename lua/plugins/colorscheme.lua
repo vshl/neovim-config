@@ -1,11 +1,13 @@
 return {
-        'Mofiqul/dracula.nvim',
+        'projekt0n/github-nvim-theme',
         lazy = false,
         priority = 1000,
         config = function()
-                require('dracula').setup({
-                        italic_comment = true
+                require('github-theme').setup({
+                        options = {
+                                dim_inactive = true
+                        }
                 })
-                vim.cmd('colorscheme dracula')
+                vim.cmd('colorscheme github_dark')
         end
 }
