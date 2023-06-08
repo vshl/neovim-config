@@ -80,3 +80,6 @@ map('n', '<space>n', require("ts-node-action").node_action, { desc = "Trigger No
 map('n', '<space>r', '<Plug>RestNvim', opt)
 map('n', '<leader>rp', '<Plug>RestNvim', opt)
 map('n', '<leader>rl', '<Plug>RestNvimLast', opt)
+
+-- neo-tree
+map('n', '<space>t', '<CMD>Neotree<CR>', opt)
