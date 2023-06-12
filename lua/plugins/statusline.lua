@@ -85,7 +85,11 @@ M.config = function()
                         lualine_x = {},
                         lualine_y = { 'location' }
                 },
-                extensions = { 'quickfix' }
+                extensions = {
+                        'quickfix',
+                        'lazy',
+                        'neo-tree'
+                }
         }
 end
 
