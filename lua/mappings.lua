@@ -83,3 +83,6 @@ map('n', '<leader>rl', '<Plug>RestNvimLast', opt)
 
 -- neo-tree
 map('n', '<leader>\\', '<CMD>Neotree reveal<CR>', opt)
+
+-- session
+map('n', '<C-s>', require('auto-session.session-lens').search_session, opt)
