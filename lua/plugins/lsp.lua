@@ -54,21 +54,19 @@ M.config = function()
   local servers = { 'solargraph', 'lua_ls', 'bashls', 'jsonls', 'yamlls', 'tsserver', 'marksman', 'sqlls' }
   local mason_lspconfig = require('mason-lspconfig')
   mason_lspconfig.setup({
-    ensured_installed = servers,
+    ensured_installed = vim.tbl_keys(servers),
     automatic_installation = true
   })
 
-  for _, server in ipairs(servers) do
-    mason_lspconfig.setup_handlers {
-      require('lspconfig')[server].setup {
-        on_attach = on_attach,
+  mason_lspconfig.setup_handlers {
+    function(server_name)
+      require('lspconfig')[server_name].setup {
         capabilities = capabilities,
-        flags = {
-          debounce_text_changes = 500,
-        }
+        on_attach = on_attach,
+        settings = servers[server_name],
       }
-    }
-  end
+    end,
+  }
 end
 
 return M
