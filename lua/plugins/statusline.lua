@@ -30,6 +30,7 @@ M.config = function()
                 options = {
                         icons_enabled = true,
                         theme = 'auto',
+                        component_separators = { left = '|', right = '|' },
                         section_separators = { left = '', right = '' },
                         disabled_filetypes = {}
                 },
@@ -49,6 +50,7 @@ M.config = function()
                                 }
                         },
                         lualine_c = {
+                                { require('auto-session.lib').current_session_name },
                                 {
                                         'diagnostics',
                                         sources = { 'nvim_lsp' },
