@@ -51,7 +51,7 @@ M.config = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-  local servers = { 'solargraph', 'lua_ls', 'bashls', 'jsonls', 'yamlls', 'tsserver', 'marksman', 'sqlls' }
+  local servers = { 'solargraph', 'lua_ls', 'bashls', 'jsonls', 'yamlls', 'tsserver', 'marksman', 'cssls' }
   local mason_lspconfig = require('mason-lspconfig')
   mason_lspconfig.setup({
     ensured_installed = vim.tbl_keys(servers),

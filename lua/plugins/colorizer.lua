@@ -3,12 +3,14 @@ return {
   ft = { 'haml', 'css', 'scss', 'javascript' },
   config = function()
     require('colorizer').setup {
-      'haml';
-      'css';
-      'scss';
-      'javascript';
-      html = {
-        names = false;
+      filetypes = {
+        'haml',
+        'scss',
+        'css',
+        'javascript',
+        html = {
+          names = false,
+        }
       }
     }
   end
