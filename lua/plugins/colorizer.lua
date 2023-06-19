@@ -1,17 +1,12 @@
 return {
-  'NvChad/nvim-colorizer.lua',
-  ft = { 'haml', 'css', 'scss', 'javascript' },
+  'uga-rosa/ccc.nvim',
   config = function()
-    require('colorizer').setup {
-      filetypes = {
-        'haml',
-        'scss',
-        'css',
-        'javascript',
-        html = {
-          names = false,
-        }
-      }
-    }
-  end
+    require('ccc').setup({
+      highlighter = {
+        auto_enable = true,
+        lsp = true,
+      },
+    })
+  end,
+  ft = { 'haml', 'css', 'scss', 'javascript' }
 }
