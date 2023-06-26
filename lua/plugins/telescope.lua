@@ -3,7 +3,6 @@ local M = {
         cmd = 'Telescope',
         dependencies = {
                 { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-                { 'nvim-telescope/telescope-file-browser.nvim' },
                 { 'sudormrfbin/cheatsheet.nvim' }
         }
 }
@@ -53,7 +52,6 @@ M.config = function()
         }
 
         require('telescope').load_extension('fzf')
-        require('telescope').load_extension('file_browser')
 end
 
 return M
