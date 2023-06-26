@@ -31,10 +31,6 @@ map('n', '<leader>gc', '<CMD>Telescope git_commits<CR>', opt)
 map('n', '<leader>z', '<CMD>ZenMode<CR>', opt)
 map('n', '<leader>zt', '<CMD>Twilight<CR>', opt)
 
--- FTerm.nvim
-map('n', '<A-i>', '<CMD>FTermToggle<CR>')
-map('t', '<A-i>', '<C-\\><C-n><CMD>FTermToggle<CR>')
-
 -- Misc
 map('n', '<leader>s', '<CMD>set spell!<CR>', opt)
 map('n', '<leader>fs', [[1z=]], opt)
@@ -86,3 +82,27 @@ map('n', '<leader>\\', '<CMD>Neotree reveal<CR>', opt)
 
 -- session
 map('n', '<C-s>', require('auto-session.session-lens').search_session, opt)
+
+-- terminal.nvim
+local term_map = require("terminal.mappings")
+map({ "n", "x" }, "<leader>ts", term_map.operator_send, { expr = true })
+map("n", "<leader>to", term_map.toggle)
+map("n", "<leader>tO", term_map.toggle({ open_cmd = "enew" }))
+map("n", "<leader>tr", term_map.run)
+map("n", "<leader>tR", term_map.run(nil, { layout = { open_cmd = "enew" } }))
+map("n", "<leader>tk", term_map.kill)
+map("n", "<leader>t]", term_map.cycle_next)
+map("n", "<leader>t[", term_map.cycle_prev)
+map("n", "<leader>tl", term_map.move({ open_cmd = "belowright vnew" }))
+map("n", "<leader>tL", term_map.move({ open_cmd = "botright vnew" }))
+map("n", "<leader>th", term_map.move({ open_cmd = "belowright new" }))
+map("n", "<leader>tH", term_map.move({ open_cmd = "botright new" }))
+map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
+
+map('n', '<A-g>', '<CMD>Lazygit<CR>')
+map('n', '<A-i>', '<CMD>TermToggle<CR>')
+map('t', '<C-\\>', '<C-\\><C-n>')
+map('t', '<C-h>', '<C-\\><C-n><C-w>h')
+map('t', '<C-j>', '<C-\\><C-n><C-w>j')
+map('t', '<C-k>', '<C-\\><C-n><C-w>k')
+map('t', '<C-l>', '<C-\\><C-n><C-w>l')

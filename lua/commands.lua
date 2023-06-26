@@ -4,28 +4,52 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yank",
 })
 
--- FTerm.nvim
-vim.api.nvim_create_user_command('FTermOpen', require('FTerm').open, { bang = true })
-vim.api.nvim_create_user_command('FTermClose', require('FTerm').close, { bang = true })
-vim.api.nvim_create_user_command('FTermExit', require('FTerm').exit, { bang = true })
-vim.api.nvim_create_user_command('FTermToggle', require('FTerm').toggle, { bang = true })
+-- terminal.nvim
+vim.api.nvim_create_autocmd("TermOpen", {
+  command = [[setlocal nonumber norelativenumber]]
+})
 
-vim.api.nvim_create_user_command('AcuityRun', function()
-    require('FTerm').run('scripts/bootstrap.sh')
-end, { bang = true })
+local lazygit = require("terminal").terminal:new({
+  layout = { open_cmd = "float", height = 0.9, width = 0.9 },
+  cmd = { "lazygit" },
+  autoclose = true,
+})
+vim.env["GIT_EDITOR"] = "nvr -cc close -cc split --remote-wait +'set bufhidden=wipe'"
+vim.api.nvim_create_user_command("Lazygit", function(args)
+  lazygit.cwd = args.args and vim.fn.expand(args.args)
+  lazygit:toggle(nil, true)
+end, { nargs = "?" })
 
-vim.api.nvim_create_user_command('AcuityDebug', function()
-    require('FTerm').run({'scripts/bootstrap.sh', '--debug'})
-end, { bang = true })
+local acuity_run = require("terminal").terminal:new({
+  cmd = { "scripts/bootstrap.sh" },
+  autoclose = true,
+})
+vim.api.nvim_create_user_command("AcuityRun", function()
+  acuity_run:toggle(nil, true)
+end, { nargs = "?" })
 
-vim.api.nvim_create_user_command('DbMigrateAll', function()
-    require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails devops:db_alter[db:migrate,all]'} })
-end, { bang = true })
+local acuity_debug = require("terminal").terminal:new({
+  cmd = { "scripts/bootstrap.sh", "--debug" },
+  autoclose = true,
+})
+vim.api.nvim_create_user_command("AcuityDebug", function()
+  acuity_debug:toggle(nil, true)
+end, { nargs = "?" })
 
-vim.api.nvim_create_user_command('UpdateActions', function()
-    require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails devops:update_actions'} })
-end, { bang = true })
+local rebuild_views = require("terminal").terminal:new({
+  layout = { open_cmd = "float" },
+  cmd = { "scripts/exec.sh", "bundle exec rails db:rebuild_views[all]" },
+  autoclose = true,
+})
+vim.api.nvim_create_user_command("RebuildViews", function()
+  rebuild_views:toggle(nil, true)
+end, { nargs = "?" })
 
-vim.api.nvim_create_user_command('RebuildViews', function()
-    require('FTerm').scratch({ cmd = {'scripts/exec.sh', 'bundle exec rails db:rebuild_views[all]'} })
-end, { bang = true })
+local dbmigrate = require("terminal").terminal:new({
+  layout = { open_cmd = "float" },
+  cmd = { "scripts/exec.sh", "bundle exec rails db:alter[db:migrate,all]" },
+  autoclose = true,
+})
+vim.api.nvim_create_user_command("DbMigrateAll", function()
+  dbmigrate:toggle(nil, true)
+end, { nargs = "?" })
