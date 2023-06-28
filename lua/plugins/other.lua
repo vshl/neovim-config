@@ -17,11 +17,12 @@ return {
                 ft = { 'tex' },
         },
         {
-                'jamessan/vim-gnupg'
+                'jamessan/vim-gnupg',
+                event = 'VeryLazy'
         },
         {
                 'kkoomen/vim-doge',
-                event = 'BufRead',
+                event = 'VeryLazy',
                 build = function() vim.fn['doge#install']() end
         },
         {
