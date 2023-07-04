@@ -7,7 +7,9 @@ return {
     'nvim-web-devicons', -- optional dependency
   },
   config = function()
-    require('barbecue').setup()
+    require('barbecue').setup({
+      theme = 'tokyonight'
+    })
   end,
   event = 'BufRead'
 }
