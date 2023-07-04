@@ -5,10 +5,6 @@ return {
                 event = 'BufRead'
         },
         {
-                'tpope/vim-repeat',
-                event = 'BufRead'
-        },
-        {
                 'tmux-plugins/vim-tmux',
                 ft = { 'tmux' }
         },
