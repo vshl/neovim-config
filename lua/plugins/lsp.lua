@@ -1,72 +1,117 @@
 local M = {
-  'neovim/nvim-lspconfig',
-  dependencies = {
-    'SmiteshP/nvim-navic'
-  }
+        'VonHeikemen/lsp-zero.nvim'
 }
 
-M.config = function()
-  local on_attach = function(client, buffnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(buffnr, ...) end
+M.branch = 'v2.x'
 
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(buffnr, ...) end
+M.dependencies = {
+        -- LSP Support
+        { 'neovim/nvim-lspconfig' }, -- Required
+        {                            -- Optional
+                'williamboman/mason.nvim',
+                build = function()
+                        pcall(vim.cmd, 'MasonUpdate')
+                end,
+        },
+        { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-    --Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-    -- Mappings.
-    local opts = { noremap = true, silent = true }
+        -- Autocompletion
+        { 'hrsh7th/nvim-cmp' },     -- Required
+        { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+        {
+                'L3MON4D3/LuaSnip',
+                version = "1.*",
+                dependencies = { 'rafamadriz/friendly-snippets' }
+        },     -- Required
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'onsails/lspkind.nvim' },
+        { 'hrsh7th/cmp-nvim-lua',               ft = 'lua' }
+}
 
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
+function M.config()
+        local lsp = require('lsp-zero').preset({})
 
-    local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-    end
+        lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({ buffer = bufnr })
+        end)
 
-    vim.diagnostic.config({
-      virtual_text = false
-    })
+        lsp.ensure_installed({
+                'solargraph',
+                'lua_ls',
+                'bashls',
+                'jsonls',
+                'marksman',
+                'cssls',
+                'tsserver'
+        })
 
-    local navic = require('nvim-navic')
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, buffnr)
-    end
-  end
+        lsp.set_sign_icons(
+                {
+                        error = "",
+                        warn = "",
+                        hint = "",
+                        info = ""
+                }
+        )
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+        lsp.setup()
 
-  local servers = { 'solargraph', 'lua_ls', 'bashls', 'jsonls', 'yamlls', 'tsserver', 'marksman', 'cssls' }
-  local mason_lspconfig = require('mason-lspconfig')
-  mason_lspconfig.setup({
-    ensured_installed = vim.tbl_keys(servers),
-    automatic_installation = true
-  })
+        local cmp = require('cmp')
 
-  mason_lspconfig.setup_handlers {
-    function(server_name)
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-      }
-    end,
-  }
+        local cmp_action = require('lsp-zero').cmp_action()
+        require('luasnip.loaders.from_vscode').lazy_load()
+        require('luasnip').filetype_extend('ruby', { 'rails' })
+
+        cmp.setup({
+                mapping = {
+                        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                        ['<Tab>'] = cmp_action.luasnip_supertab(),
+                        ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                },
+                sources = {
+                        { name = 'buffer',                 keyword_length = 3 },
+                        { name = 'nvim_lsp' },
+                        { name = 'luasnip',                keyword_length = 2 },
+                        { name = 'path' },
+                        { name = 'nvim_lua' },
+                        { name = 'nvim_lsp_signature_help' }
+                },
+                window = {
+                        completion = cmp.config.window.bordered(),
+                        documentation = cmp.config.window.bordered()
+                },
+                formatting = {
+                        fields = { 'abbr', 'kind', 'menu' },
+                        format = require('lspkind').cmp_format({
+                                mode = 'symbol', -- show only symbol annotations
+                                maxwidth = 50, -- prevent the popup from showing more than provided characters
+                                ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+                        })
+                }
+        })
+        -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+        cmp.setup.cmdline({ '/', '?' }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                        { name = 'buffer' }
+                }
+        })
+
+        -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+        cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                        { name = 'path' }
+                }, {
+                        { name = 'cmdline' }
+                })
+        })
 end
 
 return M
