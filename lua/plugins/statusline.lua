@@ -55,9 +55,6 @@ M.config = function()
                                         'diagnostics',
                                         sources = { 'nvim_lsp' },
                                         symbols = { error = ' ', warn = ' ', info = ' ' },
-                                        on_click = function()
-                                                vim.cmd('Telescope diagnostics buffnr=0')
-                                        end
                                 }
                         },
                         lualine_x = {

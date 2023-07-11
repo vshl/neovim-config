@@ -9,20 +9,22 @@ end
 local opt = {}
 
 
--- Telescope
+-- Fzf-lua
 
-map('n', '<c-p>', '<CMD>Telescope find_files<CR>', opt)
-map('n', '<leader>lg', '<CMD>Telescope live_grep<CR>', opt)
-map('n', '<leader>gs', '<CMD>Telescope grep_string<CR>', opt)
-map('n', '<leader>bf', '<CMD>Telescope buffers<CR>', opt)
-map('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opt)
-map('n', '<leader>ds', '<CMD>Telescope lsp_document_symbols<CR>', opt)
-map('n', '<leader>ws', '<CMD>Telescope lsp_workspace_symbols<CR>', opt)
-map('n', '<leader>ld', '<CMD>Telescope diagnostics buffnr=0<CR>', opt)
-map('n', '<leader>lw', '<CMD>Telescope diagnostics<CR>', opt)
-map('n', '<leader>cm', '<CMD>Telescope commands<CR>', opt)
-map('n', '<leader>km', '<CMD>Telescope keymaps<CR>', opt)
-map('n', '<leader>gc', '<CMD>Telescope git_commits<CR>', opt)
+map('n', '<c-p>', "<CMD>lua require('fzf-lua').files()<CR>", opt)
+map('n', '<leader>lg', "<CMD>lua require('fzf-lua').live_grep_native({ continue_last_search = true })<CR>", opt)
+map('n', '<leader>gs', "<CMD>lua require('fzf-lua').grep()<CR>", opt)
+map('n', '<leader>gw', "<CMD>lua require('fzf-lua').grep_cword()<CR>", opt)
+map('n', '<leader>bf', "<CMD>lua require('fzf-lua').buffers()<CR>", opt)
+map('n', '<leader>ds', "<CMD>lua require('fzf-lua').lsp_document_symbols()<CR>", opt)
+map('n', '<leader>ws', "<CMD>lua require('fzf-lua').lsp_workspace_symbols()<CR>", opt)
+map('n', '<leader>ld', "<CMD>lua require('fzf-lua').diagnostics_document()<CR>", opt)
+map('n', '<leader>lw', "<CMD>lua require('fzf-lua').diagnostics_workspace()<CR>", opt)
+map('n', '<leader>cm', "<CMD>lua require('fzf-lua').autocmds()<CR>", opt)
+map('n', '<leader>km', "<CMD>lua require('fzf-lua').keymaps()<CR>", opt)
+map({ "n", "v", "i" }, "<C-x><C-f>",
+  function() require("fzf-lua").complete_path() end,
+  { silent = true, desc = "Fuzzy complete path" })
 
 -- ZenMode
 map('n', '<leader>z', '<CMD>ZenMode<CR>', opt)
@@ -76,9 +78,6 @@ map('n', '<leader>rl', '<Plug>RestNvimLast', opt)
 
 -- neo-tree
 map('n', '<leader>\\', '<CMD>Neotree reveal<CR>', opt)
-
--- session
-map('n', '<C-s>', require('auto-session.session-lens').search_session, opt)
 
 -- terminal.nvim
 local term_map = require("terminal.mappings")
