@@ -1,6 +1,6 @@
 return {
   'kevinhwang91/nvim-hlslens',
-  event = 'BufRead',
+  event = 'VeryLazy',
   config = function()
     require('hlslens').setup()
     local kopts = {noremap = true, silent = true}
