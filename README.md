@@ -1,21 +1,13 @@
 # Neovim config
 
-This must work out-of-the-box.
+Works out-of-the-box.
 
 ## Features Overview
 
-1. Built-in LSP (using :LspInstall)
+1. Built-in LSP using Mason.nvim and Lsp-Zero
 2. Treesitter
 3. Completion using nvim-cmp
-4. telescope.nvim
-5. nvim-tree to explore filesystem
-6. Floating terminal
-7. Package management using packer.nvim
-
-
-## Setup
-
-1. `git clone <repo> ~/.config/nvim`
-2. `nvim`
-3. `:PackerSync`
-
+4. FzfLua
+5. neo-tree to explore filesystem
+6. Terminal.nvim
+7. Package management using Lazy
