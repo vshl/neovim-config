@@ -55,7 +55,7 @@ function M.config()
         settings = {
             rootMarkers = {".git/"},
         },
-        filetypes = { 'eruby', 'css', 'markdown', 'json' },
+        filetypes = { 'eruby', 'scss', 'markdown', 'json' },
     })
 
     lsp.set_sign_icons(
