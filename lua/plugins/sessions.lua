@@ -6,7 +6,7 @@ return {
     config = true,
     init = function()
         local possession = require("nvim-possession")
-        vim.keymap.set("n", "<leader>sl", function()
+        vim.keymap.set("n", "<C-s>", function()
             possession.list()
         end)
         vim.keymap.set("n", "<leader>sn", function()
@@ -19,7 +19,9 @@ return {
             possession.delete()
         end)
         require("nvim-possession").setup({
-            autoload = true -- default false
+            save_hook = function()
+                vim.cmd("Neotree toggle")
+            end,
         })
     end,
 }
