@@ -46,7 +46,16 @@ function M.config()
         'jsonls',
         'marksman',
         'cssls',
-        'tsserver'
+        'tsserver',
+        'efm'
+    })
+
+
+    require('lspconfig')['efm'].setup({
+        settings = {
+            rootMarkers = {".git/"},
+        },
+        filetypes = { 'eruby', 'css', 'markdown', 'json' },
     })
 
     lsp.set_sign_icons(
