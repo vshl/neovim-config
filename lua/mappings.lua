@@ -102,3 +102,7 @@ map('t', '<C-h>', '<C-\\><C-n><C-w>h')
 map('t', '<C-j>', '<C-\\><C-n><C-w>j')
 map('t', '<C-k>', '<C-\\><C-n><C-w>k')
 map('t', '<C-l>', '<C-\\><C-n><C-w>l')
+
+-- neogit
+map('n', '<leader>gg', '<CMD>Neogit<CR>')
+map('n', '<leader>gc', '<CMD>Neogit commit<CR>')
