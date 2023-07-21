@@ -6,30 +6,33 @@ M.branch = 'v2.x'
 
 M.dependencies = {
     -- LSP Support
-    { 'neovim/nvim-lspconfig' },     -- Required
-    {                                -- Optional
+    { 'neovim/nvim-lspconfig' }, -- Required
+    {                            -- Optional
         'williamboman/mason.nvim',
         build = function()
             pcall(vim.cmd, 'MasonUpdate')
         end,
     },
-    { 'williamboman/mason-lspconfig.nvim' },     -- Optional
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },         -- Required
-    { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+    { 'hrsh7th/nvim-cmp' },     -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
     {
         'L3MON4D3/LuaSnip',
         version = "1.*",
         dependencies = { 'rafamadriz/friendly-snippets' }
-    },     -- Required
+    }, -- Required
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-cmdline' },
     { 'hrsh7th/cmp-nvim-lsp-signature-help' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'onsails/lspkind.nvim' },
-    { 'hrsh7th/cmp-nvim-lua',               ft = 'lua' }
+    {
+        'hrsh7th/cmp-nvim-lua',
+        ft = 'lua'
+    }
 }
 
 function M.config()
@@ -53,7 +56,7 @@ function M.config()
 
     require('lspconfig')['efm'].setup({
         settings = {
-            rootMarkers = {".git/"},
+            rootMarkers = { ".git/" },
         },
         filetypes = { 'eruby', 'scss', 'markdown', 'json' },
     })
@@ -98,9 +101,9 @@ function M.config()
         formatting = {
             fields = { 'abbr', 'kind', 'menu' },
             format = require('lspkind').cmp_format({
-                mode = 'symbol',                       -- show only symbol annotations
-                maxwidth = 50,                         -- prevent the popup from showing more than provided characters
-                ellipsis_char = '...',                 -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+                mode = 'symbol',       -- show only symbol annotations
+                maxwidth = 50,         -- prevent the popup from showing more than provided characters
+                ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
             })
         }
     })
