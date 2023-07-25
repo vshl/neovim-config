@@ -97,7 +97,7 @@ map("n", "<leader>tf", term_map.move({ open_cmd = "float" }))
 
 map('n', '<A-g>', '<CMD>Lazygit<CR>')
 map('n', '<A-i>', '<CMD>TermToggle<CR>')
-map('t', '<C-\\>', '<C-\\><C-n>')
+map('t', '<C-[>', '<C-\\><C-n>')
 map('t', '<C-h>', '<C-\\><C-n><C-w>h')
 map('t', '<C-j>', '<C-\\><C-n><C-w>j')
 map('t', '<C-k>', '<C-\\><C-n><C-w>k')
