@@ -53,12 +53,39 @@ function M.config()
         'efm'
     })
 
+    local prettier_fmt = {
+        formatCommand = 'prettierd "${INPUT}"',
+        formatStdin = true,
+        env = {
+            string.format('PRETTIERD_DEFAULT_CONFIG=%s', vim.fn.expand('~/.prettierrc')),
+        },
+    }
+
+    local erb_fmt = {
+        formatCommand = 'htmlbeautifier',
+        lintDebounce = '2s',
+        lintCommand = 'erb -x -T - | ruby -c',
+        lintStdin = true,
+        lintOffset = 1,
+        formatStdin = true
+    }
+
+    local efm_languages = {
+        markdown = { prettier_fmt },
+        json = { prettier_fmt },
+        eruby = { erb_fmt },
+        scss = { prettier_fmt },
+    }
 
     require('lspconfig')['efm'].setup({
+        init_options = {
+            documentFormatting = true,
+        },
+        filetypes = vim.tbl_keys(efm_languages),
         settings = {
             rootMarkers = { ".git/" },
+            languages = efm_languages
         },
-        filetypes = { 'eruby', 'scss', 'markdown', 'json' },
     })
 
     lsp.set_sign_icons(
