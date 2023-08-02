@@ -48,7 +48,7 @@ function M.config()
         'bashls',
         'jsonls',
         'marksman',
-        'cssls',
+        'tailwindcss',
         'tsserver',
         'efm'
     })
