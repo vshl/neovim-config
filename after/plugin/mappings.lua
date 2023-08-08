@@ -13,6 +13,7 @@ local opt = {}
 
 map('n', '<c-p>', "<CMD>lua require('fzf-lua').files()<CR>", opt)
 map('n', '<leader>lg', "<CMD>lua require('fzf-lua').live_grep_native({ continue_last_search = true })<CR>", opt)
+map('n', '<leader>lb', "<CMD>lua require('fzf-lua').live_grep_glob({ continue_last_search = true })<CR>", opt)
 map('n', '<leader>gs', "<CMD>lua require('fzf-lua').grep()<CR>", opt)
 map('n', '<leader>gw', "<CMD>lua require('fzf-lua').grep_cword()<CR>", opt)
 map('n', '<leader>bf', "<CMD>lua require('fzf-lua').buffers()<CR>", opt)
