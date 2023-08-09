@@ -88,6 +88,10 @@ function M.config()
         },
     })
 
+    require('lspconfig')['tailwindcss'].setup({
+        filetypes = { 'css', 'sass', 'scss' }
+    })
+
     lsp.set_sign_icons(
         {
             error = "",
