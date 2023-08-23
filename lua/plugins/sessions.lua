@@ -20,7 +20,7 @@ return {
         end)
         require("nvim-possession").setup({
             save_hook = function()
-                vim.cmd("Neotree toggle")
+                vim.cmd("Neotree close")
             end,
         })
     end,
