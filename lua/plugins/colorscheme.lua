@@ -1,8 +1,11 @@
 return {
-    'nyoom-engineering/oxocarbon.nvim',
+    'Shatur/neovim-ayu',
     lazy = false,
     priority = 1000,
     config = function()
-        vim.cmd('colorscheme oxocarbon')
+        require('ayu').setup({
+            mirage = true,
+        })
+        vim.cmd('colorscheme ayu')
     end
 }
