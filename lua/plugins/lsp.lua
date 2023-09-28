@@ -2,7 +2,7 @@ local M = {
     'VonHeikemen/lsp-zero.nvim'
 }
 
-M.branch = 'v2.x'
+M.branch = 'v3.x'
 
 M.dependencies = {
     -- LSP Support
@@ -36,22 +36,8 @@ M.dependencies = {
 }
 
 function M.config()
-    local lsp = require('lsp-zero').preset({})
-
-    lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-    end)
-
-    lsp.ensure_installed({
-        'solargraph',
-        'lua_ls',
-        'bashls',
-        'jsonls',
-        'marksman',
-        'tailwindcss',
-        'tsserver',
-        'efm'
-    })
+    require('mason').setup({})
+    local lsp_zero = require('lsp-zero')
 
     local prettier_fmt = {
         formatCommand = 'prettierd "${INPUT}"',
@@ -77,22 +63,49 @@ function M.config()
         scss = { prettier_fmt },
     }
 
-    require('lspconfig')['efm'].setup({
-        init_options = {
-            documentFormatting = true,
+    require('mason-lspconfig').setup({
+        ensure_installed = {
+            'solargraph',
+            'lua_ls',
+            'bashls',
+            'jsonls',
+            'marksman',
+            'tailwindcss',
+            'tsserver',
+            'efm'
         },
-        filetypes = vim.tbl_keys(efm_languages),
-        settings = {
-            rootMarkers = { ".git/" },
-            languages = efm_languages
-        },
+
+        handlers = {
+            lsp_zero.default_setup,
+            efm = function()
+                require('lspconfig').efm.setup({
+                    init_options = {
+                        documentFormatting = true,
+                    },
+                    filetypes = vim.tbl_keys(efm_languages),
+                    settings = {
+                        rootMarkers = { ".git/" },
+                        languages = efm_languages
+                    },
+                })
+            end,
+            tailwindcss = function()
+                require('lspconfig').tailwindcss.setup({
+                    filetypes = { 'css', 'sass', 'scss' }
+                })
+            end,
+            lua_ls = function()
+                local lua_opts = lsp_zero.nvim_lua_ls()
+                require('lspconfig').lua_ls.setup(lua_opts)
+            end
+        }
     })
 
-    require('lspconfig')['tailwindcss'].setup({
-        filetypes = { 'css', 'sass', 'scss' }
-    })
+    lsp_zero.on_attach(function(client, bufnr)
+        lsp_zero.default_keymaps({ buffer = bufnr })
+    end)
 
-    lsp.set_sign_icons(
+    lsp_zero.set_sign_icons(
         {
             error = "",
             warn = "",
@@ -101,11 +114,9 @@ function M.config()
         }
     )
 
-    lsp.setup()
-
     local cmp = require('cmp')
 
-    local cmp_action = require('lsp-zero').cmp_action()
+    local cmp_action = lsp_zero.cmp_action()
     require('luasnip.loaders.from_vscode').lazy_load()
     require('luasnip').filetype_extend('ruby', { 'rails' })
 
