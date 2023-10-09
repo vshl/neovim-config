@@ -11,7 +11,8 @@ return {
             "NeogitStatus",
             "NeogitPopup",
             "NeogitCommitMessage",
-            "FZF"
+            "FZF",
+            "harpoon"
         },
     }
 }
