@@ -83,3 +83,9 @@ map('n', '<leader>\\', '<CMD>Neotree toggle<CR>', opt)
 -- neogit
 map('n', '<leader>gg', '<CMD>Neogit<CR>')
 map('n', '<leader>gc', '<CMD>Neogit commit<CR>')
+
+-- harpoon
+map('n', '<space>h', '<CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>')
+map('n', '<space>a', '<CMD>lua require("harpoon.mark").add_file()<CR>')
+map('n', '<space>j', '<CMD>lua require("harpoon.ui").nav_next()<CR>')
+map('n', '<space>k', '<CMD>lua require("harpoon.ui").nav_prev()<CR>')
