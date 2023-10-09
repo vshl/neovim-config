@@ -11,7 +11,7 @@ return {
             "NeogitStatus",
             "NeogitPopup",
             "NeogitCommitMessage",
-            "fzf"
+            "FZF"
         },
     }
 }
