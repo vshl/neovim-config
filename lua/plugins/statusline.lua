@@ -60,15 +60,15 @@ M.config = function()
                 {
                     'diagnostics', sources = { 'nvim_lsp' },
                     symbols = { error = ' ', warn = ' ', info = ' ' },
-                },
-                {
-                    'lsp_progress'
                 }
             },
             lualine_x = {
                 {
                     'diff',
                     symbols = { added = ' ', modified = ' ', removed = ' ' }
+                },
+                {
+                    'lsp_progress'
                 },
                 {
                     server_name,
