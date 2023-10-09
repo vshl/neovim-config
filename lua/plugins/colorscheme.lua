@@ -1,11 +1,8 @@
 return {
-    'Shatur/neovim-ayu',
+    'luisiacc/gruvbox-baby',
     lazy = false,
     priority = 1000,
     config = function()
-        require('ayu').setup({
-            mirage = true,
-        })
-        vim.cmd('colorscheme ayu')
+        vim.cmd('colorscheme gruvbox-baby')
     end
 }
