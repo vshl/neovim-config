@@ -3,7 +3,8 @@ local M = {
 }
 
 M.dependencies = {
-    'nvim-tree/nvim-web-devicons'
+    'nvim-tree/nvim-web-devicons',
+    'arkav/lualine-lsp-progress'
 }
 
 M.priority = 100
@@ -57,9 +58,11 @@ M.config = function()
                     end,
                 },
                 {
-                    'diagnostics',
-                    sources = { 'nvim_lsp' },
+                    'diagnostics', sources = { 'nvim_lsp' },
                     symbols = { error = ' ', warn = ' ', info = ' ' },
+                },
+                {
+                    'lsp_progress'
                 }
             },
             lualine_x = {
@@ -92,7 +95,8 @@ M.config = function()
         extensions = {
             'quickfix',
             'lazy',
-            'neo-tree'
+            'neo-tree',
+            'fzf'
         }
     }
 end
