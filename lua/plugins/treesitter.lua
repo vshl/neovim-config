@@ -19,7 +19,7 @@ M.config = function()
     local tsconfig = require('nvim-treesitter.configs')
     tsconfig.setup {
         ensure_installed = { 'ruby', 'lua', 'bash', 'javascript', 'json', 'yaml', 'python', 'scss', 'html',
-            'comment', 'http' },
+            'comment', 'http', 'vim' },
         ignore_install = {},
         highlight = {
             enable = true
@@ -95,6 +95,28 @@ M.config = function()
         endwise = {
             enable = true,
         },
+    }
+
+    local rainbow_delimiters = require('rainbow-delimiters')
+    require('rainbow-delimiters.setup') {
+        strategy = {
+            [''] = rainbow_delimiters.strategy['global'],
+            vim = rainbow_delimiters.strategy['local'],
+        },
+        query = {
+            [''] = 'rainbow-delimiters',
+            lua = 'rainbow-blocks',
+        },
+        highlight = {
+            'RainbowDelimiterRed',
+            'RainbowDelimiterYellow',
+            'RainbowDelimiterBlue',
+            'RainbowDelimiterOrange',
+            'RainbowDelimiterGreen',
+            'RainbowDelimiterViolet',
+            'RainbowDelimiterCyan',
+        },
+        blacklist = { 'c', 'cpp' },
     }
 end
 
