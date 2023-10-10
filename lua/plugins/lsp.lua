@@ -4,6 +4,8 @@ local M = {
 
 M.branch = 'v3.x'
 
+M.event = 'VeryLazy'
+
 M.dependencies = {
     -- LSP Support
     { 'neovim/nvim-lspconfig' }, -- Required

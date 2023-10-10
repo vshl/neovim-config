@@ -4,6 +4,8 @@ local M = {
 
 M.build = ':TSUpdate'
 
+M.event = 'VeryLazy'
+
 M.dependencies = {
   'nvim-treesitter/nvim-treesitter-textobjects',
   'nvim-treesitter/nvim-treesitter-refactor',
