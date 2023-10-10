@@ -58,7 +58,8 @@ M.config = function()
                     end,
                 },
                 {
-                    'diagnostics', sources = { 'nvim_lsp' },
+                    'diagnostics',
+                    sources = { 'nvim_lsp' },
                     symbols = { error = ' ', warn = ' ', info = ' ' },
                 }
             },
