@@ -85,7 +85,14 @@ map('n', '<leader>gg', '<CMD>Neogit<CR>')
 map('n', '<leader>gc', '<CMD>Neogit commit<CR>')
 
 -- harpoon
-map('n', '<space>h', '<CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>')
-map('n', '<space>a', '<CMD>lua require("harpoon.mark").add_file()<CR>')
+map('n', '<leader>gh', '<CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>')
 map('n', '<space>j', '<CMD>lua require("harpoon.ui").nav_next()<CR>')
 map('n', '<space>k', '<CMD>lua require("harpoon.ui").nav_prev()<CR>')
+local function harpoon_toggle()
+    if (vim.v.count > 0) then
+        return '<CMD>lua require("harpoon.ui").nav_file(vim.v.count)<CR>'
+    else
+        return '<CMD>lua require("harpoon.mark").toggle_file()<CR>'
+    end
+end
+map('n', '<leader>ha', harpoon_toggle, { expr = true })
