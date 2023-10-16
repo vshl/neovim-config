@@ -9,7 +9,7 @@ M.dependencies = {
 
 M.priority = 100
 
-M.config = function()
+M.opts = function()
     -- Lsp server name .
     local function server_name()
         local msg = 'No Active Lsp'
@@ -27,7 +27,7 @@ M.config = function()
         return msg
     end
 
-    require('lualine').setup {
+    return {
         options = {
             icons_enabled = true,
             theme = 'gruvbox-material',
