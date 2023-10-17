@@ -33,7 +33,7 @@ M.opts = function()
             theme = 'gruvbox-material',
             component_separators = { left = '|', right = '|' },
             section_separators = { left = '', right = '' },
-            disabled_filetypes = {}
+            disabled_filetypes = {'dashboard'}
         },
         sections = {
             lualine_a = { 'branch', 'mode' },
