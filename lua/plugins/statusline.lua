@@ -97,7 +97,8 @@ M.opts = function()
             'quickfix',
             'lazy',
             'neo-tree',
-            'fzf'
+            'fzf',
+            'mason'
         }
     }
 end
