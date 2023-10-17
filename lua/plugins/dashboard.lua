@@ -21,8 +21,8 @@ return {
                         key = 'f',
                     },
                     {
-                        desc = ' Sessions',
-                        group = 'DiagnosticHint',
+                        icon = ' ',
+                        desc = 'Sessions',
                         action = "lua require('nvim-possession').list()",
                         key = 's'
                     }
