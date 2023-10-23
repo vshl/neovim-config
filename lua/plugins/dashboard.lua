@@ -11,10 +11,11 @@ return {
                 },
                 shortcut = {
                     {
-                        desc = '󰊳 Update',
+                        icon = '󰊳 ',
+                        desc = 'Lazy',
                         group = '@property',
-                        action = 'Lazy update',
-                        key = 'u'
+                        action = 'Lazy check',
+                        key = 'l'
                     },
                     {
                         icon = ' ',
