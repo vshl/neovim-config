@@ -1,9 +1,8 @@
 return {
-    'sainnhe/gruvbox-material',
+    'tanvirtin/monokai.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-        vim.cmd([[let g:gruvbox_material_better_performance = 1]])
-        vim.cmd('colorscheme gruvbox-material')
+        require('monokai').setup { palette = require('monokai').ristretto }
     end
 }
