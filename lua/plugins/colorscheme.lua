@@ -1,8 +1,8 @@
 return {
-    'tanvirtin/monokai.nvim',
+    'navarasu/onedark.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-        require('monokai').setup { palette = require('monokai').ristretto }
+        require('onedark').load()
     end
 }
