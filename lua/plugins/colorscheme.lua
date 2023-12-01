@@ -1,8 +1,11 @@
 return {
-    'navarasu/onedark.nvim',
+    'ribru17/bamboo.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-        require('onedark').load()
-    end
+        require('bamboo').setup {
+            dim_inactive = true
+        }
+        require('bamboo').load()
+    end,
 }
