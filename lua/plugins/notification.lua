@@ -1,9 +1,9 @@
 return {
-    'rcarriga/nvim-notify',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    'j-hui/fidget.nvim',
     event = 'VeryLazy',
-    config = function()
-        require('notify').setup()
-        vim.notify = require('notify')
-    end
+    opts = {
+        notification = {
+            override_vim_notify = true
+        }
+    }
 }

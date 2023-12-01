@@ -3,8 +3,7 @@ local M = {
 }
 
 M.dependencies = {
-    'nvim-tree/nvim-web-devicons',
-    'arkav/lualine-lsp-progress'
+    'nvim-tree/nvim-web-devicons'
 }
 
 M.priority = 100
@@ -68,9 +67,6 @@ M.opts = function()
                 {
                     'diff',
                     symbols = { added = ' ', modified = ' ', removed = ' ' }
-                },
-                {
-                    'lsp_progress'
                 },
                 {
                     server_name,
