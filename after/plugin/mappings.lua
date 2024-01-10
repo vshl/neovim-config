@@ -85,14 +85,12 @@ map('n', '<leader>gg', '<CMD>Neogit<CR>')
 map('n', '<leader>gc', '<CMD>Neogit commit<CR>')
 
 -- harpoon
-map('n', '<leader>gh', '<CMD>lua require("harpoon.ui").toggle_quick_menu()<CR>')
-map('n', '<space>j', '<CMD>lua require("harpoon.ui").nav_next()<CR>')
-map('n', '<space>k', '<CMD>lua require("harpoon.ui").nav_prev()<CR>')
-local function harpoon_toggle()
-    if (vim.v.count > 0) then
-        return '<CMD>lua require("harpoon.ui").nav_file(vim.v.count)<CR>'
-    else
-        return '<CMD>lua require("harpoon.mark").toggle_file()<CR>'
-    end
-end
-map('n', '<leader>ha', harpoon_toggle, { expr = true })
+local harpoon = require('harpoon')
+harpoon:setup()
+
+map("n", "<leader>ha", function() harpoon:list():append() end)
+map("n", "<leader>gh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+map("n", '<space>j', function() harpoon:list():prev() end)
+map("n", '<space>k', function() harpoon:list():next() end)
