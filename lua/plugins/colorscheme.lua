@@ -1,11 +1,15 @@
 return {
-    'ribru17/bamboo.nvim',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = false,
     priority = 1000,
     config = function()
-        require('bamboo').setup {
-            dim_inactive = true
+        require('catppuccin').setup {
+            flavour = 'frappe',
+            dim_inactive = {
+                enabled = true
+            }
         }
-        require('bamboo').load()
+        vim.cmd.colorscheme 'catppuccin'
     end,
 }
