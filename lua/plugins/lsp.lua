@@ -72,7 +72,6 @@ function M.config()
             'bashls',
             'jsonls',
             'marksman',
-            'tailwindcss',
             'tsserver',
             'efm'
         },
@@ -89,11 +88,6 @@ function M.config()
                         rootMarkers = { ".git/" },
                         languages = efm_languages
                     },
-                })
-            end,
-            tailwindcss = function()
-                require('lspconfig').tailwindcss.setup({
-                    filetypes = { 'css', 'sass', 'scss' }
                 })
             end,
             lua_ls = function()
