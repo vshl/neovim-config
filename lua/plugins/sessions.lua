@@ -18,10 +18,5 @@ return {
         vim.keymap.set("n", "<leader>sd", function()
             possession.delete()
         end)
-        require("nvim-possession").setup({
-            save_hook = function()
-                vim.cmd("Neotree close")
-            end,
-        })
     end,
 }

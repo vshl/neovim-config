@@ -6,15 +6,13 @@ return {
         disabled_filetypes = {
             "qf",
             "netrw",
-            "neo-tree",
             "lazy",
             "mason",
-            "NeogitStatus",
-            "NeogitPopup",
-            "NeogitCommitMessage",
             "FZF",
             "harpoon",
-            "dashboard"
+            "dashboard",
+            "oil",
+            "toggleterm"
         },
     }
 }

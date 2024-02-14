@@ -77,9 +77,6 @@ map('n', '<space>r', '<Plug>RestNvim', opt)
 map('n', '<leader>rp', '<Plug>RestNvim', opt)
 map('n', '<leader>rl', '<Plug>RestNvimLast', opt)
 
--- neo-tree
-map('n', '<leader>\\', '<CMD>Neotree toggle<CR>', opt)
-
 -- nvim-toggleterm
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
