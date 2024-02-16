@@ -127,3 +127,6 @@ map("n", "<leader>gh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) e
 -- Toggle previous & next buffers stored within Harpoon list
 map("n", '<space>j', function() harpoon:list():prev() end)
 map("n", '<space>k', function() harpoon:list():next() end)
+
+-- oil.nvim
+map('n', '<A-->', '<CMD>Oil<CR>')
